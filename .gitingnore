@@ -136,3 +136,4 @@ dmypy.json
 
 # Cython 디버그 기호
 cython_debug /
+/.idea/vcs.xml
