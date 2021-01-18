@@ -30,14 +30,41 @@ reserve = list(map(int, input().split()))
 
 def solution(n, lost, reserve):
     answer = 0
-    for i in reserve:
-        if i in lost:
+
+
+
+    # for i in lost, reserve 사용 시 누락되는 케이스 발생
+    for i in range(31):
+         if i in reserve and i in lost:
             reserve.remove(i)
             lost.remove(i)
-        for j in lost:
-            if abs(i - j) <= 1:
-                lost.remove(j)
-                reserve.remove(i)
+
+
+    if 2 in lost and 1 in reserve:
+        lost.remove(2)
+        reserve.remove(1)
+
+    if n-1 in lost and n in reserve:
+        lost.remove(n-1)
+        reserve.remove(n)
+
+    for j in range(31):
+        for i in range(31):
+            if j in lost:
+                if i in reserve:
+                    if j == 1:
+                        if 2 in reserve:
+                            lost.remove(1)
+                            reserve.remove(2)
+                    elif (i != 1) or (i != n):
+                        if abs(i - j) <= 1:
+                            lost.remove(j)
+                            reserve.remove(i)
+                    elif j == n:
+                        if n-1 in reserve:
+                            lost.remove(j)
+                            reserve.remove(n-1)
+
     answer = n - len(lost)
 
     return answer
