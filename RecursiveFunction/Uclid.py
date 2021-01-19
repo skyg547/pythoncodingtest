@@ -1,5 +1,5 @@
 #유클리드 호제법
-
+#최대공약수 구하기
 def gcd(a,b):
     if a%b == 0:
         return b
