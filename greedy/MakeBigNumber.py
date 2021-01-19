@@ -48,27 +48,50 @@
 #     return answer
 from collections import deque
 
+# 알고리즘 잘못 설정
+# def solution(number, k):
+#     answer = ''
+#     num = k  # 반복횟수
+#
+#     i = 0
+#     stack = []
+#     stack.append(number[i])
+#
+#     while k > 0:
+#         i += 1
+#         if i == len(number):
+#             break
+#         if k == 0:
+#             break
+#
+#         if number[i] > stack[-1]:
+#             stack.pop()
+#             k -= 1
+#         stack.append(number[i])
+#
+#     for j in range(i+1, len(number)):
+#         if j == len(number):
+#             break
+#         stack.append(number[j])
+#
+#     if k > 0:
+#         for i in range(len(number) - num):
+#             answer = stack.pop() + answer
+#     elif k == 0:
+#         for i in range(len(number) - num):
+#             answer = stack.pop() + answer
+#
+#     return answer
 
 def solution(number, k):
-    answer = ''
+    stack = [number[0]]
+    for num in number[1:]:
+        while len(stack) > 0 and stack[-1] < num and k > 0:
+            k -= 1
+            stack.pop()
+        stack.append(num)
+    if k != 0:
+        stack = stack[:-k]
+    return ''.join(stack)
 
-    i = 0
-    stack = []
-
-    while k != 0:
-        if i + 1 < len(number):
-            stack.append(number[i])
-            i += 1
-            if i + 1 < len(number):
-
-                if number[i] > number[i + 1]:
-                    stack.pop()
-                    k -= 1
-        else:
-            break
-    print(stack)
-
-    return answer
-
-
-print(solution("1924", 2))
+print(solution("1231234", 3))
