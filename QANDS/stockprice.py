@@ -15,52 +15,78 @@
 # 5초 시점의 ₩3은 0초간 가격이 떨어지지 않았습니다.
 # ※ 공지 - 2019년 2월 28일 지문이 리뉴얼되었습니다.
 
+# def solution(prices):
+#     answer = [ 0 for _ in range(len(prices))]
+#     stack = []
+#     stack.append([0,prices[0]])
+#     #스택에 인덱스 저장
+#     for i, value in enumerate(prices):
+#         if value < stack[-1][1]:
+#             answer[stack[-1][0]] += 1
+#             stack.pop()
+#
+#         stack.append([i,value])
+#         #맨처음꺼 빼주기
+#
+#         if i == 0:
+#             stack.pop()
+#         #print(stack)
+#
+#
+#         #스택에있는 인덱스는 1초씩 더하기
+#         for j in range(len(stack)):
+#             answer[stack[j][0]] += 1
+#
+#     #맨처음 1초 빼주기
+#     for i in range(len(answer)):
+#         answer[i] = answer[i]-1
+#
+#
+#     print(answer)
+#     return answer
+#
+#
+#
+
+#
+#
+# def solution1(prices):
+#     answer = [0 for _ in range(len(prices))]
+#     stack = []
+#     for i in range(len(prices)):
+#         while len(stack) != 0 and prices[i] < prices[stack[len(stack) -1]]:
+#             temp = stack.pop()
+#             answer[temp] = i - temp
+#         stack.append(i)
+#     while len(stack):
+#         temp = stack.pop()
+#         answer[temp] = len(prices) - temp - 1
+#
+#     return answer
+
+#모범 답안
+
+
+from collections import deque
+
 def solution(prices):
-    answer = [ 0 for _ in range(len(prices))]
-    stack = []
-    stack.append([0,prices[0]])
-    #스택에 인덱스 저장
-    for i, value in enumerate(prices):
-        if value < stack[-1][1]:
-            answer[stack[-1][0]] += 1
-            stack.pop()
+    answer = []
+    price = deque(prices)
+    i = 0
 
-        stack.append([i,value])
-        #맨처음꺼 빼주기
+    while price:
 
-        if i == 0:
-            stack.pop()
-        #print(stack)
-
-
-        #스택에있는 인덱스는 1초씩 더하기
-        for j in range(len(stack)):
-            answer[stack[j][0]] += 1
-
-    #맨처음 1초 빼주기
-    for i in range(len(answer)):
-        answer[i] = answer[i]-1
+        c = price.popleft()
+        count = 1
+        for i in prices:
+            if c > i:
+                count += 1
+                break
+            count += 1
+        answer.append(count)
 
 
-    print(answer)
     return answer
-
-
 
 a = [5,8,6,2,4,1]
 solution(a)
-
-
-def solution1(prices):
-    answer = [0 for _ in range(len(prices))]
-    stack = []
-    for i in range(len(prices)):
-        while len(stack) != 0 and prices[i] < prices[stack[len(stack) -1]]:
-            temp = stack.pop()
-            answer[temp] = i - temp
-        stack.append(i)
-    while len(stack):
-        temp = stack.pop()
-        answer[temp] = len(prices) - temp - 1
-
-    return answer
