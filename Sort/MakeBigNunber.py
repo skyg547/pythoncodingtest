@@ -35,8 +35,58 @@
 #
 #     return answer
 
+# 실패 쪼개는게 아님
+# def solution(numbers):
+#     answer = ''
+#     tempanswer = []
+#     for i in numbers:
+#         if i == 1000:
+#             tempanswer.append(int(i/1000))
+#             tempanswer.append(int(i%1000/100))
+#             tempanswer.append(int(i%100/10))
+#             tempanswer.append(int(i%10))
+#         elif i >= 100:
+#             tempanswer.append(int(i/100))
+#             tempanswer.append(int(i%100/10))
+#             tempanswer.append(int(i%10))
+#         elif i >= 10:
+#             tempanswer.append(int(i/10))
+#             tempanswer.append(int(i%10))
+#         else:
+#             tempanswer.append(int(i))
+#
+#     tempanswer.sort(reverse=True)
+#     print(tempanswer)
+#     for i in tempanswer:
+#         answer += str(i)
+#     print(tempanswer)
+#
+#     return answer
 
-numbers = [6, 10, 2]
+# 정답
+def solution(numbers):
+
+    print(numbers)
+    numbers = list(map(str, numbers))
+    numbers.sort(key=lambda x : x*3,reverse=True)
+    print(numbers)
+
+    return str(int(''.join(numbers)))
+
+
+numbers = [6, 10, 2,30,34]
 print(solution(numbers))
-print('45123'.sort(reverse=True))
-print
+
+# # e다른해설
+# import functools
+#
+# def comparator(a,b):
+#     t1 = a+b
+#     t2 = b+a
+#     return (int(t1) > int(t2)) - (int(t1) < int(t2)) #  t1이 크다면 1  // t2가 크다면 -1  //  같으면 0
+#
+# def solution(numbers):
+#     n = [str(x) for x in numbers]
+#     n = sorted(n, key=functools.cmp_to_key(comparator),reverse=True)
+#     answer = str(int(''.join(n)))
+#     return answer
