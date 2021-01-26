@@ -19,32 +19,91 @@
 # 입출력 예 설명
 # 문제에 나온 예와 같습니다.
 #
+# 구현 실패 오답
 
-from collections import deque
+# from collections import deque
+#
+# answer = 0
+#
+#
+# def solution(numbers, target):
+#     queue = deque(numbers)
+#     global answer
+#     A(queue, target, 0, 0)
+#
+#     return answer
+#
+#
+# def A(queue, target, now, b):
+#     global answer
+#     if (queue == None):
+#         if now == target:
+#             answer = + 1
+#             return
+#     queue.popleft()
+#     now += b
+#
+#     A(queue, target, now, +queue[0])
+#     A(queue, target, now, -queue[0])
+#
+#     return
+#
+#
+# numbers = [1, 1, 1, 1, 1]
+# target = 3
+# print(solution(numbers, target))
 
-global answer
+# 인터넷 해설
+#
+# global answer
+# answer = 0
+#
+# def DFS(id, numbers, target, value):
+#     global answer
+#
+#     if id == len(numbers):
+#         if target == value:
+#             answer += 1
+#             return
+#         else:
+#             return
+#
+#     DFS(id + 1, numbers, target, value + numbers[id])
+#     DFS(id + 1, numbers, target, value - numbers[id])
+#
+#
+# def solution(numbers, target):
+#     global answer
+#
+#     DFS(0, numbers, target, 0)
+#     return answer
+
+
+# 모법답안
+# def solution(numbers, target):
+#     if not numbers and target == 0 :
+#         return 1
+#     elif not numbers:
+#         return 0
+#     else:  # 재귀를 돌면서 리턴값 더하기
+#         return solution(numbers[1:], target-numbers[0]) + solution(numbers[1:], target+numbers[0])
+
+
+#모범답안2
+
+from itertools import product
 
 
 def solution(numbers, target):
-    queue = deque(numbers)
-    answer = 0
-    A(queue, target, 0, 0)
-
-    return answer
-
-
-def A(queue, target, now, b):
-    if (queue == None):
-        if now == target:
-            answer = + 1
-            return
-    queue.popleft()
-    now += b
-
-    A(queue, target, now, +queue[0])
-    A(queue, target, now, -queue[0])
-
-    return
+    # 리스트에 +,- 쪼개서 넣어버리기
+    l = [(x, -x) for x in numbers]
+    print(l)
+    # 프로덕트 함수,
+    print(list(product(*l)))
+    s = list(map(sum, product(*l)))
+    print(s)
+    # 카운트 함수
+    return s.count(target)
 
 
 numbers = [1, 1, 1, 1, 1]
