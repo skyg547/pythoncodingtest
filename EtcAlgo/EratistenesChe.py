@@ -21,4 +21,5 @@ for i in range(2, int(math.sqrt(n)) + 1):
 # 모든 소수 출력
 for i in range(2, n + 1):
     if array[i]:
+
         print(i, end=' ')
