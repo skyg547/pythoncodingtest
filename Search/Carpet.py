@@ -18,12 +18,20 @@
 # 8	1	[3, 3]
 # 24	24	[8, 6]
 def solution(brown, yellow):
-    answer = []
+    x = (brown + 4 + ((brown + 4) ** 2 - 16 * (brown + yellow) ** 0.5) / 4)
+    y = (brown + yellow) // x
+
+    return [max(x, y), min(x, y)]
 
 
-    return answer
+def solution(brown, yellow):
+    for a in range(1, int(yellow ** 0.5) + 1):
+        if not yellow % a:
+            b = yellow // a
+            if 2 * a + 2 * b + 4 == brown:
+                return [b + 2, a + 2]
 
 
 brown = 10
 yellow = 2
-print(solution(brown,yellow))
+print(solution(brown, yellow))
