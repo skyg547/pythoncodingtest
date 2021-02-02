@@ -47,3 +47,4 @@ def solution(phone_book):
 
 phone_book = ["113", "44", "4544"]
 print(solution(phone_book))
+
