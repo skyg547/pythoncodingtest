@@ -31,20 +31,35 @@
 # 2019년 5월 13일, 테스트 케이스가 변경되었습니다. 이로 인해 이전에 통과하던 코드가 더 이상 통과하지 않을 수 있습니다.
 #
 # 출처
+#
+# # 효율성 실패, 테케 1,2개 못통과
+# def solution(phone_book):
+#     answer = True
+#     compare = phone_book[0]
+#     phone_book.sort()
+#     print(phone_book)
+#     for i in phone_book:
+#         if i == compare: continue
+#         if i.startswith(compare):
+#             return False
+#     return answer
 
-# 효율성 실패, 테케 1,2개 못통과
+#정답
 def solution(phone_book):
     answer = True
-    compare = phone_book[0]
-    phone_book = phone_book[1::]
-    phone_book.sort()
-    print(phone_book)
-    for i in phone_book:
-        if i.__contains__(compare):
-            return False
+    hash_map = {}
+    for phone_number in phone_book:
+        hash_map[phone_number] = 1
+
+    print(hash_map)
+    for phone_number in phone_book:
+        temp = ""
+        for number in phone_number:
+            temp += number
+            print(temp)
+            if temp in hash_map and temp != phone_number:
+                answer = False
     return answer
-
-
 phone_book = ["113", "44", "4544"]
+print(solution(['1192456', '119']))
 print(solution(phone_book))
-
