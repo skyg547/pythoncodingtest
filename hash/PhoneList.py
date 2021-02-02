@@ -37,11 +37,13 @@ def solution(phone_book):
     answer = True
     compare = phone_book[0]
     phone_book = phone_book[1::]
+    phone_book.sort()
+    print(phone_book)
     for i in phone_book:
         if i.__contains__(compare):
             return False
     return answer
 
 
-phone_book = ['119','97674223', '1195524421']
+phone_book = ["113", "44", "4544"]
 print(solution(phone_book))
