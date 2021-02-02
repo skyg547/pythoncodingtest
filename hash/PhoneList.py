@@ -32,13 +32,16 @@
 #
 # 출처
 
-
+# 효율성 실패, 테케 1,2개 못통과
 def solution(phone_book):
     answer = True
-
-
+    compare = phone_book[0]
+    phone_book = phone_book[1::]
+    for i in phone_book:
+        if i.__contains__(compare):
+            return False
     return answer
 
 
-phone_book = [119,97674223, 1195524421]
-solution(phone_book)
+phone_book = ['119','97674223', '1195524421']
+print(solution(phone_book))
