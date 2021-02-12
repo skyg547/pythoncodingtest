@@ -38,6 +38,30 @@
 # 2. blue_sunglasses
 # 3. smoky_makeup
 
-def solution(clothes):
-    answer = 0
-    return answer
+# def solution(clothes):
+#     answer = {}
+#
+#     for i in clothes:
+#         if i[1] in answer:
+#             answer[i[1]] += 1
+#         else:
+#             answer[i[1]] = 1
+#
+#     cnt = 1
+#     의상수 곱하기 -1
+#     for i in answer.values():
+#         cnt *= (i + 1)
+#
+#
+#     return answer
+#  해설 정답
+import collections
+from functools import reduce
+
+
+def solution(c):
+    return reduce(lambda x, y: x * y, [a + 1 for a in collections.Counter([x[1] for x in c]).values()]) - 1
+
+
+clo = [["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]]
+print(solution(clo))
