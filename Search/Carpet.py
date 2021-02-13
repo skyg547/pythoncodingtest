@@ -32,6 +32,11 @@ def solution(brown, yellow):
                 return [b + 2, a + 2]
 
 
+#  근의 공식을 이용한 풀이
+import math
+def solution(brown, yellow):
+    ans=((brown-4)+math.sqrt((brown-4)**2-16*yellow))//4
+    return [ans+2,yellow//ans+2]
 brown = 10
 yellow = 2
 print(solution(brown, yellow))
