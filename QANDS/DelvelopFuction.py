@@ -29,6 +29,44 @@
 #
 # ※ 공지 - 2020년 7월 14일 테스트케이스가 추가되었습니다.
 
+from collections import deque
+
+#   내풀이
+# def solution(progresses, speeds):
+#     answer = []
+#     tmpanswer = 0;
+#
+#     progressesqueue = deque(progresses)
+#     speedsqueue = deque(speeds)
+#
+#     while progressesqueue:
+#         for i in range(len(progressesqueue)):
+#             progressesqueue[i] += speedsqueue[i]
+#
+#         print(progressesqueue)
+#
+#         if progressesqueue[0] >= 100:
+#             tmpanswer += 1
+#             progressesqueue.popleft()
+#             speedsqueue.popleft()
+#             if progressesqueue[1] < 100:
+#                 answer.append(tmpanswer)
+#                 tmpanswer = 0
+#                 print('ap')
+#
+#     return answer
+
+# 모범답안
 def solution(progresses, speeds):
-    answer = []
-    return answer
+    Q=[]
+    for p, s in zip(progresses, speeds):
+        if len(Q)==0 or Q[-1][0]<-((p-100)//s):
+            Q.append([-((p-100)//s),1])
+        else:
+            Q[-1][1]+=1
+    return [q[1] for q in Q]
+
+pro = [95, 90, 99, 99, 80, 99]
+spe = [1, 1, 1, 1, 1, 1]
+
+print(solution(pro, spe))
