@@ -33,25 +33,41 @@
 from collections import deque
 
 
-def solution(bridge_length, weight, truck_weights):
-    answer = 0
+# 실패 풀이
+# def solution(bridge_length, weight, truck_weights):
+#     answer = 0
+#
+#     time = 0
+#     queue = deque()
+#
+#     while True:
+#         if not queue and not truck_weights:
+#             break
+#
+#         time += 1
+#
+#         if sum(queue) < weight:
+#             queue.append(truck_weights.pop())
+#
+#         if bridge_length == 1:
+#             queue.popleft()
+#
+#     return time
 
-    time = 0
-    queue = deque()
-
-    while True:
-        if not queue and not truck_weights:
-            break
-
-        time += 1
-
-        if sum(queue) < weight:
-            queue.append(truck_weights.pop())
-
-        if bridge_length == 1:
-            queue.popleft()
-
-    return time
+# 해설
+def solution(br, w, tw):
+    q = [0] * br
+    sec = 0
+    while q:
+        sec += 1
+        # 첫번째꺼 빼주기
+        q.pop(0)
+        if tw:
+            if sum(q) + tw[0] <= w:
+                q.append(tw.pop(0))
+            else:
+                q.append(0)
+    return sec
 
 
 bl = 100
