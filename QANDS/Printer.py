@@ -29,6 +29,17 @@
 #  프린터 문제
 def solution(priorities, location):
     answer = 0
+    answerlos = priorities[location]
+    while priorities:
+        if priorities[0] != max(priorities):
+            priorities.append(priorities.pop(0))
+            print(priorities)
+        else:
+            answer += 1
+            if answerlos == priorities[0]:
+                break
+            priorities.pop(0)
+
     return answer
 
 p = [2, 1, 3, 2]
