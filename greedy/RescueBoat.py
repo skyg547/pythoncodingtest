@@ -17,7 +17,40 @@
 # people	limit	return
 # [70, 50, 80, 50]	100	3
 # [70, 80, 50]	100	3
+from collections import deque
+
 
 def solution(people, limit):
+    queue = deque(sorted(people))
     answer = 0
+
+
+    while queue:
+        if queue[-1] + queue[0] <= limit:
+            queue.pop()
+            if queue:
+                queue.popleft()
+        else:
+            queue.pop()
+        answer += 1
+
+
     return answer
+
+# 모범 답안
+def solution(people, limit) :
+    answer = 0
+    people.sort()
+
+    a = 0
+    b = len(people) - 1
+    while a < b :
+        if people[b] + people[a] <= limit :
+            a += 1
+            answer += 1
+        b -= 1
+    return len(people) - answer
+p = [70, 50, 80, 50]
+l = 100
+
+print(solution(p, l))
