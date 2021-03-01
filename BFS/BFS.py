@@ -3,7 +3,7 @@ from collections import deque
 def bfs(graph, start, visited):
     #큐 구현을 위해 덱 라이브러리 사용
     queue = deque([start])
-
+    print(queue)
     #현재 노드를 방문 처리
     visited[start] = True
 
