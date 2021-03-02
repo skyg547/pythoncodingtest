@@ -20,6 +20,21 @@ def solution(n, computers):
     visted = [False]*n
     queue = deque([0])
 
+    graph = []
+    for i in range(n):
+        graph.append([])
+
+
+
+    for i in range(n):
+        for j in range(i,n):
+            if i==j:
+                pass
+            else:
+                if computers[i][j] == 1:
+                    graph[i].append(j)
+
+    print(graph)
     # #첫번째 방문 처리
     # visted[0] = True
     #
