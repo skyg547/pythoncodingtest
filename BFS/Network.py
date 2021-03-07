@@ -15,26 +15,26 @@
 # 3	[[1, 1, 0], [1, 1, 1], [0, 1, 1]]	1
 from collections import deque
 
-def solution(n, computers):
-    answer = 0
-    visted = [False]*n
-    queue = deque([0])
-
-    graph = []
-    for i in range(n):
-        graph.append([])
-
-
-
-    for i in range(n):
-        for j in range(i,n):
-            if i==j:
-                pass
-            else:
-                if computers[i][j] == 1:
-                    graph[i].append(j)
-
-    print(graph)
+# def solution(n, computers):
+#     answer = 0
+#     visted = [False]*n
+#     queue = deque([0])
+#
+#     graph = []
+#     for i in range(n):
+#         graph.append([])
+#
+#
+#
+#     for i in range(n):
+#         for j in range(i,n):
+#             if i==j:
+#                 pass
+#             else:
+#                 if computers[i][j] == 1:
+#                     graph[i].append(j)
+#
+#     print(graph)
     # #첫번째 방문 처리
     # visted[0] = True
     #
@@ -46,46 +46,85 @@ def solution(n, computers):
     #             queue.append(i)
     #             #연결된곳 방문 처리
     #             visted[i] = True
+#
+#     for j in range(len(visted)):
+#         while not visted[j]:
+#             visted[j] = True
+#             answer += 1
+#             while queue:
+#
+#                 v = queue.popleft()
+#                 for i in computers[v]:
+#                     if not visted[i]:
+#                         queue.append(i)
+#                         # 연결된곳 방문 처리
+#                         visted[i] = True
+#
+#
+#
+#
+#     return answer
+#
+# def solution(n, computers):
+#     answer = 0
+#     visited = [False for i in range(n)]
+#     for com in range(n):
+#         if visited[com] == False:
+#             BFS(n, computers, com, visited)
+#             answer += 1
+#     return answer
+#
+# def BFS(n, computers, com, visited):
+#     visited[com] = True
+#     queue = []
+#     queue.append(com)
+#     while len(queue) != 0:
+#         com = queue.pop(0)
+#         visited[com] = True
+#         for connect in range(n):
+#             if connect != com and computers[com][connect] == 1:
+#                 if visited[connect] == False:
+#                     queue.append(connect)
 
-    for j in range(len(visted)):
-        while not visted[j]:
-            visted[j] = True
-            answer += 1
-            while queue:
-
-                v = queue.popleft()
-                for i in computers[v]:
-                    if not visted[i]:
-                        queue.append(i)
-                        # 연결된곳 방문 처리
-                        visted[i] = True
 
 
-
-
-    return answer
-
-def solution(n, computers):
-    answer = 0
-    visited = [False for i in range(n)]
-    for com in range(n):
-        if visited[com] == False:
-            BFS(n, computers, com, visited)
-            answer += 1
-    return answer
-
-def BFS(n, computers, com, visited):
-    visited[com] = True
-    queue = []
-    queue.append(com)
-    while len(queue) != 0:
-        com = queue.pop(0)
-        visited[com] = True
-        for connect in range(n):
-            if connect != com and computers[com][connect] == 1:
-                if visited[connect] == False:
-                    queue.append(connect)
 n = 3
 c = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
 
+
+def solution(n, computers):
+    answer = 0
+    bfs = []
+    visited = [0]*n
+
+    while 0 in visited:
+        x = visited.index(0)
+        print(x)
+        bfs.append(x)
+        visited[x] = 1
+
+        while bfs:
+            node = bfs.pop(0)
+            visited[node] = 1
+            for i in range(n):
+                if visited[i] == 0 and computers[node][i] == 1:
+                    bfs.append(i)
+                    visited[i] = 1
+        answer +=  1
+    return answer
+
+
+
+# 플루이드 우셜
+def solution(n, computers):
+    temp = []
+    for i in range(n):
+        temp.append(i)
+    for i in range(n):
+        for j in range(n):
+            if computers[i][j]:
+                for k in range(n):
+                    if temp[k] == temp[i]:
+                        temp[k] = temp[j]
+    return len(set(temp))
 print(solution(n, c))
