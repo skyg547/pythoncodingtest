@@ -33,4 +33,17 @@
 
 def solution(genres, plays):
     answer = []
+
+    hash_map = {}
+    for i in range(len(genres)):
+             hash_map[genres[i]] = []
+
+    for i in range(len(plays)):
+    print(hash_map)
     return answer
+
+
+g = ["classic", "pop", "classic", "classic", "pop"]
+p = [500, 600, 150, 800, 2500]
+print(solution(g,p))
+
