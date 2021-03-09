@@ -31,19 +31,107 @@
 #
 # ※ 공지 - 2019년 2월 28일 테스트케이스가 추가되었습니다.
 
+# def solution(genres, plays):
+#     answer = []
+#
+#     hash_map = {}
+#     for i in range(len(genres)):
+#              hash_map[genres[i]] = []
+#
+#     for i in range(len(plays)):
+#     print(hash_map)
+#     return answer
+from collections import defaultdict as dd
+
+
 def solution(genres, plays):
     answer = []
+    playOfGenre = dd(int)
+    songIdAndPlay = dd(list)
 
-    hash_map = {}
-    for i in range(len(genres)):
-             hash_map[genres[i]] = []
+    for songId, (genre, play) in enumerate(zip(genres, plays)):
+        # print(songId)
+        # print(genre)
+        # print(play)
+        # print('-------------')
+        playOfGenre[genre] += play
+        songIdAndPlay[genre].append((songId, play))
+    #
+    # print('wwwwwwwwww')
+    # print(playOfGenre)
+    # print(songIdAndPlay)
+    playOfGenre = sorted(playOfGenre.items(), key=lambda x: x[1], reverse=True)
+    # print(playOfGenre)
 
-    for i in range(len(plays)):
-    print(hash_map)
+    for genre, play in playOfGenre:
+        songIdAndPlay[genre].sort(key=lambda x: x[1], reverse=True)
+        answer += songIdAndPlay[genre][:2]
+        # print(songIdAndPlay)
+        # print(genre,
+        #     answer
+        # )
+
+    answer = [a[0] for a in answer]
     return answer
 
+#이중람다
+def solution(genres, plays):
+    answer = []
+    d = {e:[] for e in set(genres)}
+    for e in zip(genres, plays, range(len(plays))):
+        d[e[0]].append([e[1] , e[2]])
+    genreSort =sorted(list(d.keys()), key= lambda x: sum( map(lambda y: y[0],d[x])), reverse = True)
+    for g in genreSort:
+        temp = [e[1] for e in sorted(d[g],key= lambda x: (x[0], -x[1]), reverse = True)]
+        answer += temp[:min(len(temp),2)]
+    return answer
+
+#클래스 사용
+def solution(genres, plays):
+    answer = []
+    dic = {}
+    album_list = []
+    for i in range(len(genres)):
+        dic[genres[i]] = dic.get(genres[i], 0) + plays[i]
+        album_list.append(album(genres[i], plays[i], i))
+
+    dic = sorted(dic.items(), key=lambda dic:dic[1], reverse=True)
+    album_list = sorted(album_list, reverse=True)
+
+
+
+    while len(dic) > 0:
+        play_genre = dic.pop(0)
+        print(play_genre)
+        cnt = 0;
+        for ab in album_list:
+            if play_genre[0] == ab.genre:
+                answer.append(ab.track)
+                cnt += 1
+            if cnt == 2:
+                break
+
+    return answer
+
+class album:
+    def __init__(self, genre, play, track):
+        self.genre = genre
+        self.play = play
+        self.track = track
+
+    def __lt__(self, other):
+        return self.play < other.play
+    def __le__(self, other):
+        return self.play <= other.play
+    def __gt__(self, other):
+        return self.play > other.play
+    def __ge__(self, other):
+        return self.play >= other.play
+    def __eq__(self, other):
+        return self.play == other.play
+    def __ne__(self, other):
+        return self.play != other.play
 
 g = ["classic", "pop", "classic", "classic", "pop"]
 p = [500, 600, 150, 800, 2500]
-print(solution(g,p))
-
+print(solution(g, p))
