@@ -26,6 +26,13 @@
 
 def solution(tickets):
     answer = []
+
+
+    #bfs 로 풀이
+    # 받고
+    # 비교
+    # 뚤고
+    #
     return answer
 
 
