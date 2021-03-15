@@ -26,8 +26,18 @@
 
 def solution(tickets):
     answer = []
+    answer.append(tickets[0][0])
+    temp = []
+    temp.append(tickets[0][1])
+    print(tickets.pop(0))
+    print(tickets)
 
-
+    while tickets:
+        for i in tickets:
+            print(i)
+            print(i[0])
+            print(i[1])
+            tickets.pop(0)
     #bfs 로 풀이
     # 받고
     # 비교
@@ -36,6 +46,6 @@ def solution(tickets):
     return answer
 
 
-ticket = [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]	["ICN", "JFK", "HND", "IAD"]
+ticket = [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]
 
 print(solution(ticket))
