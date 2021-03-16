@@ -31,18 +31,16 @@ def solution(tickets):
     temp.append(tickets[0][1])
     print(tickets.pop(0))
     print(tickets)
-
+    print(temp[0])
     while tickets:
         for i in tickets:
-            print(i)
-            print(i[0])
-            print(i[1])
-            tickets.pop(0)
-    #bfs 로 풀이
-    # 받고
-    # 비교
-    # 뚤고
-    #
+            if temp[0]== (i[0]):
+                print(i[0])
+                answer.append((i[0]))
+                temp.pop()
+                temp.append(i[1])
+                tickets.pop(0)
+
     return answer
 
 
