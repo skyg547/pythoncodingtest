@@ -24,25 +24,42 @@
 # 
 # ["ICN", "SFO", "ATL", "ICN", "ATL", "SFO"] 순으로 방문할 수도 있지만 ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"] 가 알파벳 순으로 앞섭니다.
 
+# def solution(tickets):
+#     answer = []
+#     answer.append(tickets[0][0])
+#     temp = []
+#     temp.append(tickets[0][1])
+#     print(tickets.pop(0))
+#     print(tickets)
+#     print(temp[0])
+#     while tickets:
+#         for i in tickets:
+#             if temp[0]== (i[0]):
+#                 print(i[0])
+#                 answer.append((i[0]))
+#                 temp.pop()
+#                 temp.append(i[1])
+#                 tickets.pop(0)
+#
+#     return answer
 def solution(tickets):
-    answer = []
-    answer.append(tickets[0][0])
-    temp = []
-    temp.append(tickets[0][1])
-    print(tickets.pop(0))
-    print(tickets)
-    print(temp[0])
-    while tickets:
-        for i in tickets:
-            if temp[0]== (i[0]):
-                print(i[0])
-                answer.append((i[0]))
-                temp.pop()
-                temp.append(i[1])
-                tickets.pop(0)
-
-    return answer
-
+    tickets.sort(reverse=True)
+    routes = dict()
+    for t1, t2 in tickets:
+        if t1 in routes:
+            routes[t1].append(t2)
+        else:
+            routes[t1] = [t2]
+    st = ['ICN']
+    ans = []
+    while st:
+        top = st[-1]
+        if top not in routes or len(routes[top])==0:
+            ans.append(st.pop())
+        else:
+            st.append(routes[top].pop())
+    ans.reverse()
+    return ans
 
 ticket = [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]
 
