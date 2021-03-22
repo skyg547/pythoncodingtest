@@ -27,8 +27,21 @@
 
 def solution(begin, target, words):
     answer = 0
+    begin
+    words
+
+    target
+
+    #워드 순회
+    for i in words:
+        print(i)
+        for j in range(len(i)):
+            print(i[j])
+
     return answer
 
 b = "hit"
 t = "cog"
 w = ["hot", "dot", "dog", "lot", "log", "cog"]
+
+solution(b,t,w)
