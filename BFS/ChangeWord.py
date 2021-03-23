@@ -77,6 +77,7 @@ def solution(begin, target, words):
                     tmp_q.append(words.pop(word_2_idx))
         if not tmp_q:
             return 0
+        print(tmp_q)
         queue = tmp_q
         answer += 1
 
