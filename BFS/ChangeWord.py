@@ -34,19 +34,24 @@ def solution(begin, target, words):
 
     # 워드 순회
     for i in words:
-        print(i)
+        # print(i)
         cnt = 0
+        ans = 0
         for j in range(len(i)):
-
+            if i[j] == target[j]:
+                ans += 1
+            if ans == 2:
+                answer += 1
+                return answer
             if temp[j] == i[j]:
                 cnt += 1
             # print(temp[j])
             # print(i[j])
-            print(cnt)
+            # print(cnt)
             if cnt >= 2:
                 temp = i
                 answer += 1
-                print('------------',temp, answer)
+                # print('------------',temp, answer)
                 if temp == target:
                     return answer
                 break
@@ -54,6 +59,46 @@ def solution(begin, target, words):
     answer = 0
     return answer
 
+
+def solution(begin, target, words):
+    answer = 0
+    queue = [begin]
+    while True:
+        tmp_q = []
+        for word_1 in queue:
+            if word_1 == target:
+                return answer
+            for word_2_idx in range(len(words) - 1, -1, -1):
+                word_2 = words[word_2_idx]
+                print([x != y for x, y in zip(word_1, word_2)])
+                difference = sum([x != y for x, y in zip(word_1, word_2)])
+                print(difference)
+                if difference == 1:
+                    tmp_q.append(words.pop(word_2_idx))
+        if not tmp_q:
+            return 0
+        queue = tmp_q
+        answer += 1
+
+
+# def solution(begin, target, words):
+#     answer = 0
+#     queue = [begin]
+#     print(queue)
+#     while True:
+#         tmp_q = []
+#         for word_1 in queue:
+#             if word_1 == target:
+#                 return answer
+#             for word_2_idx in range(len(words)-1, -1, -1):
+#                 word_2 = words[word_2_idx]
+#                 difference = sum([x != y for x,y in zip(word_1, word_2)])
+#                 if difference == 1:
+#                     tmp_q.append(words.pop(word_2_idx))
+#     if not tmp_q:
+#         return 0
+#     queue = tmp_q
+#     answer += 1
 
 b = "hit"
 t = "cog"
