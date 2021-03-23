@@ -45,4 +45,14 @@
 # 2ms 시점에 6ms 걸리는 작업 요청이 들어옵니다.
 def solution(jobs):
     answer = 0
+    avg = 0
+
+    for i in jobs:
+        avg += 5 - i[0]
+    answer = int(avg / len(jobs))
     return answer
+
+
+jobs = [[0, 3], [1, 9], [2, 6]]
+
+print(solution(jobs))
