@@ -41,11 +41,24 @@
 # 문제에 주어진 예와 같습니다.
 #
 # 0ms 시점에 3ms 걸리는 작업 요청이 들어옵니다.
-# 1ms 시점에 9ms 걸리는 작업 요청이 들어옵니다.
+# 1ms 시점에 9ms 걸리는 작업 요청이 들어옵니다.p,ㅔ
 # 2ms 시점에 6ms 걸리는 작업 요청이 들어옵니다.
 def solution(jobs):
     answer = 0
     avg = 0
+    t = 0
+    endtime = []
+    processtime = []
+
+    for i in jobs:
+        processtime.append(i[1] - i[0])
+
+    temp_que = []
+    print(temp_que)
+    print(processtime)
+    while temp_que:
+        t += 1
+        print(t)
 
     for i in jobs:
         avg += 5 - i[0]
