@@ -54,11 +54,8 @@ def solution(jobs):
         processtime.append(i[1] - i[0])
 
     temp_que = []
-    print(temp_que)
-    print(processtime)
     while temp_que:
         t += 1
-        print(t)
 
     for i in jobs:
         avg += 5 - i[0]
