@@ -23,3 +23,20 @@
 # 예제 출력 1
 # 1666
 # 출처
+
+
+
+def solution(number):
+
+    answer = 0
+    if number == 1:
+        return 666
+    answer = number - 1
+    n = str(number - 1) + "666"
+    answer = int(n)
+
+    return answer
+
+
+n = int(input())
+print(solution(n))
