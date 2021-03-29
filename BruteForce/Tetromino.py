@@ -51,14 +51,7 @@
 # 예제 출력 3
 # 7
 
-def inputs():
-    n, m = map(int, input().split())
-    s = []
 
-    for _ in range(n):
-        for _ in range(m):
-            s = input()
-    return n,m,s
 
 def solution(n, m, s):
     answer = 0
@@ -77,8 +70,6 @@ def solution(n, m, s):
     answer = sum(ansarray)
 
     return answer
-
-n,m,s = inputs()
 
 n = 4
 m = 5

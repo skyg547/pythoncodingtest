@@ -25,15 +25,21 @@
 # 출처
 
 
-
 def solution(number):
-
     answer = 0
-    if number == 1:
-        return 666
-    answer = number - 1
-    n = str(number - 1) + "666"
-    answer = int(n)
+    # if number == 1:
+    #     return 666
+    # answer = number - 1
+    # n = str(number - 1) + "666"
+    # answer = int(n)
+
+    answerArray = []
+    num = 66611
+    if '666' in str(num):
+        print(1)
+
+    # while len(answerArray) <= 10000:
+
 
     return answer
 
