@@ -59,6 +59,7 @@ def solution(n, m, s):
     for i in s:
         print(i)
 
+
         if len(ansarray) < 4:
             ansarray.append(max(i))
         else:
