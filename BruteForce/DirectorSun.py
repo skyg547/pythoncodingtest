@@ -34,13 +34,15 @@ def solution(number):
     # answer = int(n)
 
     answerArray = []
-    num = 66611
-    if '666' in str(num):
-        print(1)
+    answerArray.append(666)
+    num = 0
 
-    # while len(answerArray) <= 10000:
+    while len(answerArray) <= 10000:
 
-
+        if '666' in str(num):
+            answerArray.append(num)
+        num = num + 1
+    answer = answerArray[number]
     return answer
 
 
