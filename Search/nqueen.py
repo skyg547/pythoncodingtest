@@ -16,6 +16,8 @@
 # 8
 # 예제 출력 1
 # 92
+
+#알고리즘 떠오르지 않음
 def solution(n):
     answer = 0
     return answer
