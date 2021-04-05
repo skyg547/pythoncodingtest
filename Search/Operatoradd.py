@@ -47,3 +47,64 @@
 # 예제 출력 3
 # 54
 # -24
+
+
+from itertools import permutations, product
+
+
+def solution(s, opt):
+    answer = []
+    optlist = []
+    min = 9999999999
+    max = -9999999999
+
+    for i in range(opt[0]):
+        optlist.append('+')
+    for i in range(opt[1]):
+        optlist.append('-')
+    for i in range(opt[2]):
+        optlist.append('*')
+    for i in range(opt[3]):
+        optlist.append('/')
+
+    optlist = set(list(map(''.join, permutations(optlist))))
+
+    for j in optlist:
+
+        sum = s[0]
+
+        for i in range(len(j)):
+            if j[i] == '+':
+                sum += s[i + 1]
+            elif j[i] == '-':
+                sum -= s[i + 1]
+
+            elif j[i] == '*':
+                sum *= s[i + 1]
+
+            elif j[i] == '/':
+                if sum < 0:
+                    sum = -sum
+                    sum = -(sum // s[i + 1])
+                else:
+                    sum = sum // s[i + 1]
+
+        if sum < min:
+            min = sum
+            # print('min',j)
+        if sum > max:
+            max = sum
+            # print('max',j)
+
+    # print(-1 // 3)
+    return max, min
+
+
+n = 6
+s = [1, 2, 3, 4, 5, 6]
+opt = [2, 1, 1, 1]
+n = int(input())
+s = list(map(int, input().split()))
+opt = list(map(int, input().split()))
+for i in solution(s, opt):
+    print(i)
