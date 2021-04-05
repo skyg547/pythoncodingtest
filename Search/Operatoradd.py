@@ -49,15 +49,16 @@
 # -24
 
 
-from itertools import permutations, product
+from itertools import permutations
 
 
 def solution(s, opt):
-    answer = []
     optlist = []
-    min = 9999999999
-    max = -9999999999
 
+    min = 2e9
+    max = -2e9
+
+    # 연산자 갯수 맞게 배열 만들어주기
     for i in range(opt[0]):
         optlist.append('+')
     for i in range(opt[1]):
@@ -67,12 +68,16 @@ def solution(s, opt):
     for i in range(opt[3]):
         optlist.append('/')
 
+    # 연산자의 모든 순열을 permutations으로 만들고, ''.join 으로 한 문자열 로 묶어주기,  set 으로 중복 제거
+
     optlist = set(list(map(''.join, permutations(optlist))))
 
+    # 연산자 배열에 담긴 연산들을  돌면서 계산하기
     for j in optlist:
-
+        # 계산값
         sum = s[0]
 
+        # 계산해주기 j는 연산자배열들 -> i는 배열에서 나오는 연산자의 인덱스
         for i in range(len(j)):
             if j[i] == '+':
                 sum += s[i + 1]
@@ -81,17 +86,18 @@ def solution(s, opt):
 
             elif j[i] == '*':
                 sum *= s[i + 1]
-
+            # 나누기는 특별, 몪만 남기고, 음수일때 양수로 바꿔서 잘라버리기
             elif j[i] == '/':
                 if sum < 0:
                     sum = -sum
                     sum = -(sum // s[i + 1])
                 else:
                     sum = sum // s[i + 1]
-
+        # 최소값 비교 저장
         if sum < min:
             min = sum
             # print('min',j)
+        # 최대값 비교 저장
         if sum > max:
             max = sum
             # print('max',j)
@@ -103,8 +109,11 @@ def solution(s, opt):
 n = 6
 s = [1, 2, 3, 4, 5, 6]
 opt = [2, 1, 1, 1]
+# 입력
 n = int(input())
 s = list(map(int, input().split()))
 opt = list(map(int, input().split()))
+
+# 출력
 for i in solution(s, opt):
     print(i)
