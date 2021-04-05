@@ -37,6 +37,7 @@ from itertools import permutations
 
 
 def solution(n, x, y):
+    answer = 0
     array = []
     for i in range(1, n + 1):
         array.append(i)
@@ -51,14 +52,33 @@ def solution(n, x, y):
     # print(xequalyarray)
 
     # 랭퍼든 수열 판별
-    # n의 인덱스 - n의 인덱스는 = n+1
-    for i in xequalyarray:
-        for j in range(1, n + 1):
-            abs(i.index(j) - i.index(j, __start=len(i) - 1))
 
-    return 0
+    for i in xequalyarray:
+        truenum = 0
+        # 1부터 n까지 반복
+        for j in range(1, n + 1):
+            indexes = 0
+            # 인덱스 담는곳
+            indexlist = []
+            # n과 배열의 숫자가 같은걸찾기 위해 반복
+            for k in i:
+                if j == k:
+                    # n과 배열안의 숫자가 같을때 인덱스를 추가
+                    indexlist.append(indexes)
+                indexes += 1
+            # n의 인덱스 - n의 인덱스는 = n+1
+            if abs(indexlist[0] - indexlist[1]) != j + 1:
+                truenum = 1
+
+                break
+        if truenum == 0:
+            answer += 1
+
+    return answer
 
 
 n, x, y = 3, 1, 5
+
+n, x, y = map(int, input().split())
 
 print(solution(n, x, y))
