@@ -10,24 +10,44 @@
 #
 # 출력
 # 첫째 줄에 문제에서 설명한 최대 K개의 집중국의 수신 가능 영역의 길이의 합의 최솟값을 출력한다.
-import math
+
+# 문제 풀이 참고
+
 def solution(n, k, l):
     # 집중국과 센서 수가 같거나 크면 1개 씩 마크
     if n <= k:
         return 0
+    #좌표 정렬
     l.sort()
-    l = set(l)
 
 
-    print(sum(l)//len(l))
-    2312
-    print(l)
-    return
+
+    dist = []
+
+    # 거리의 차 구하기
+    sums = 0
+    for i in l:
+        dist.append(i - sums)
+
+        sums = i
+    # 첫번째꺼 제거
+    dist = dist[1::]
+
+
+    # 역순 정렬
+    dist.sort(reverse=True)
+    # print(dist[k-1::])
+
+    # k-1 개 제거 후 더함
+    return sum(dist[k-1::])
 
 
 if __name__ == '__main__':
     n = 6
     k = 2
     l = [1, 6, 9, 3, 6, 7]
-
+    #
+    n = int(input())
+    k = int(input())
+    l = list(map(int, input().split()))
     print(solution(n, k, l))
