@@ -21,8 +21,26 @@
 # 각 테스트케이스에 대해 필요한 쿼터의 개수, 다임의 개수, 니켈의 개수, 페니의 개수를 공백으로 구분하여 출력한다.
 
 
-def solution():
-    return
+def solution(n, p):
+    ans = []
+
+    # 단위 별로 나눠주고, 남은거 배열에 추가
+    for price in p:
+        tempanser = [price // 25, price % 25 // 10, price % 25 % 10 // 5, price % 25 % 10 % 5 // 1]
+        ans.append(tempanser)
+
+    return ans
+
+
+import sys
 
 if __name__ == '__main__':
-    print(solution())
+    # 거스름돈 개
+    n = 3
+    p = [124, 25, 194]
+
+    n = int(sys.stdin.readline())
+    p = [int(sys.stdin.readline()) for _ in range(n)]
+
+    for i in solution(n, p):
+        print(*i)
