@@ -27,5 +27,11 @@
 def solution():
     return
 
+
 if __name__ == '__main__':
-    solution()
+    # 그냥 빼줌
+    n, s = map(int, input().split())
+    p1 = list(map(int, input().split()))
+    p2 = list(map(int, input().split()))
+
+    print(sum(p1)-sum(p2))
