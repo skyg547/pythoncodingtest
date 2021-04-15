@@ -83,6 +83,16 @@ if __name__ == '__main__':
     ]
     N, M, V = map(int, input().split())
 
-    L = [list(map(int, input().split())) for _ in range(M)]
+    # 12 % 탈락반례
+    # 3 2 1
+    # 1 3
+    # 2 1
+    # 3 2 1
+    # 1 2
+    # 1 3
+    # 이유 :
+
+    # 해결법 -> 솔트
+    L = [sorted(list(map(int, input().split()))) for _ in range(M)]
     L.sort(key=lambda x: (x[0], x[1]))
     solution(N, V, L)
