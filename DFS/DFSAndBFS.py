@@ -12,22 +12,64 @@
 
 from collections import deque
 
-def bfs():
 
-    return
+def bfs(V, L, visited):
+    queue = deque()
+    queue.append(V)
 
-def dfs():
-    return
+    while queue:
+        # 큐에서 빼서
+        TempV = queue.popleft()
+        # 방문처리 하고
+        visited[TempV] = 1
+        # 출력
+        print(TempV, end=' ')
 
-def solution(N, M, V, L):
-    global visited
-    visited = [0]*N
+        # 간선 리스트 순회
+        for i in L:
+            # 정점이 지금 정점이고
+            if i[0] == TempV:
+                # 방문하지않고, 큐에 없으면
+                if visited[i[1]] == 0 and i[1] not in queue:
+                    # 큐애 추가
+                    queue.append(i[1])
 
-    dfsans = []
-    bfsans = []
+            # 정점이 지금 정점이고
+            if i[1] == TempV:
+                # 방문하지않고, 큐에 없으면
+                if visited[i[0]] == 0 and i[0] not in queue:
+                    # 큐애 추가
+                    queue.append(i[0])
 
-    return
 
+def dfs(V, L, visited):
+    ans = []
+
+    # 방문 처리
+    visited[V] = 1
+    # 방문한거 출력
+    print(V, end=' ')
+
+    # 그래프를 도는데
+    for i in L:
+        # 만약 방문 처리 가 되지않았다면
+        if visited[i[1]] == 0 and i[0] == V:
+            dfs(i[1], L, visited)
+        if visited[i[0]] == 0 and i[1] == V:
+            dfs(i[0], L, visited)
+
+# 12 % 탈락
+def solution(N, V, L):
+    # 인덱스를 편하게 관리하고자 n+1 곱해줌
+    visited = [0] * (N + 1)
+
+    dfs(V, L, visited)
+
+    #한칸 뛰우기
+    print()
+    # 초기화
+    visited = [0] * (N + 1)
+    bfs(V, L, visited)
 
 
 if __name__ == '__main__':
@@ -39,5 +81,8 @@ if __name__ == '__main__':
         [2, 4],
         [3, 4]
     ]
+    N, M, V = map(int, input().split())
 
-    print(solution(N, M, V, L))
+    L = [list(map(int, input().split())) for _ in range(M)]
+    L.sort(key=lambda x: (x[0], x[1]))
+    solution(N, V, L)
