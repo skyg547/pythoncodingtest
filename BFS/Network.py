@@ -35,17 +35,17 @@ from collections import deque
 #                     graph[i].append(j)
 #
 #     print(graph)
-    # #첫번째 방문 처리
-    # visted[0] = True
-    #
-    # while queue:
-    #
-    #     v = queue.popleft()
-    #     for i in computers[v]:
-    #         if not visted[i]:
-    #             queue.append(i)
-    #             #연결된곳 방문 처리
-    #             visted[i] = True
+# #첫번째 방문 처리
+# visted[0] = True
+#
+# while queue:
+#
+#     v = queue.popleft()
+#     for i in computers[v]:
+#         if not visted[i]:
+#             queue.append(i)
+#             #연결된곳 방문 처리
+#             visted[i] = True
 #
 #     for j in range(len(visted)):
 #         while not visted[j]:
@@ -87,44 +87,85 @@ from collections import deque
 #                     queue.append(connect)
 
 
-
 n = 3
 c = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
+
+# def solution(n, computers):
+#     answer = 0
+#     bfs = []
+#     visited = [0]*n
+#
+#     while 0 in visited:
+#         x = visited.index(0)
+#         print(x)
+#         bfs.append(x)
+#         visited[x] = 1
+#
+#         while bfs:
+#             node = bfs.pop(0)
+#             visited[node] = 1
+#             for i in range(n):
+#                 if visited[i] == 0 and computers[node][i] == 1:
+#                     bfs.append(i)
+#                     visited[i] = 1
+#         answer +=  1
+#     return answer
+
+
+#
+# # 플루이드 우셜
+# def solution(n, computers):
+#     temp = []
+#     for i in range(n):
+#         temp.append(i)
+#     for i in range(n):
+#         for j in range(n):
+#             if computers[i][j]:
+#                 for k in range(n):
+#                     if temp[k] == temp[i]:
+#                         temp[k] = temp[j]
+#     return len(set(temp))
+# print(solution(n, c))
+
+from collections import deque
 
 
 def solution(n, computers):
     answer = 0
-    bfs = []
-    visited = [0]*n
 
-    while 0 in visited:
-        x = visited.index(0)
-        print(x)
-        bfs.append(x)
-        visited[x] = 1
+    visited = [0] * n
 
-        while bfs:
-            node = bfs.pop(0)
+    # 방문되지 않은게 있으면
+    while not all(visited):
+        # 큐생성
+        queue = deque()
+
+        # 큐에 방문되지 않음 0 넣기
+        queue.append(visited.index(0))
+        # 큐가 비지 않았으면
+        while len(queue) != 0:
+
+            # 큐에서 꺼내고
+            node = queue.pop()
+
+            # 방문 처리
             visited[node] = 1
-            for i in range(n):
-                if visited[i] == 0 and computers[node][i] == 1:
-                    bfs.append(i)
-                    visited[i] = 1
-        answer +=  1
+            print(visited, queue)
+            # bfs 탐색
+            # 리스트의 컴퓨터인덱스 가지고 와서
+            for element in range(n):
+                if computers[node][element] == 1 and element != node and element not in queue and element != 0:
+                    queue.append(element)
+                    # print(visited, queue)
+            print(visited, queue)
+
+        answer += 1
+
     return answer
 
 
+if __name__ == '__main__':
+    n = 3
+    l = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
 
-# 플루이드 우셜
-def solution(n, computers):
-    temp = []
-    for i in range(n):
-        temp.append(i)
-    for i in range(n):
-        for j in range(n):
-            if computers[i][j]:
-                for k in range(n):
-                    if temp[k] == temp[i]:
-                        temp[k] = temp[j]
-    return len(set(temp))
-print(solution(n, c))
+    print(solution(n, l))
