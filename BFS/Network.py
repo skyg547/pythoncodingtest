@@ -87,8 +87,8 @@ from collections import deque
 #                     queue.append(connect)
 
 
-n = 3
-c = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
+# n = 3
+# c = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
 
 # def solution(n, computers):
 #     answer = 0
@@ -139,25 +139,27 @@ def solution(n, computers):
     while not all(visited):
         # 큐생성
         queue = deque()
+        # print('돌아가는 큐 ', queue,visited)
 
         # 큐에 방문되지 않음 0 넣기
         queue.append(visited.index(0))
         # 큐가 비지 않았으면
         while len(queue) != 0:
 
-            # 큐에서 꺼내고
-            node = queue.pop()
 
+
+            # 큐에서 꺼내고 --> 오류 났던 원인 pop 으로 해줘서 뒤에 껄꺼냄
+            node = queue.popleft()
+            # print(node,queue)
             # 방문 처리
             visited[node] = 1
-            print(visited, queue)
+
             # bfs 탐색
-            # 리스트의 컴퓨터인덱스 가지고 와서
+            # 리스트의 컴퓨터 인덱스 가지고 와서
             for element in range(n):
-                if computers[node][element] == 1 and element != node and element not in queue and element != 0:
+                if computers[node][element] == 1 and element != node and element not in queue and visited[element] == 0:
                     queue.append(element)
-                    # print(visited, queue)
-            print(visited, queue)
+
 
         answer += 1
 
