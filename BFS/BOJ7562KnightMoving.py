@@ -15,21 +15,45 @@
 # 각 테스트 케이스마다 나이트가 최소 몇 번만에 이동할 수 있는지 출력한다.
 
 # 나이트의 이동가능 경로
+import sys
+
 dx = [-2, -1, 1, 2, -2, -1, 1, 2]
 dy = [-1, -2, -2, -1, 1, 2, 2, 1]
 
 
+
+def dfs(l, x, y):
+    if x[0] < 0 and x[1] < 0:
+        return
+    if x[0] >= l and x[1] >= l:
+        return
+    if (x[0] - y[0]) == 0 and (x[1] - y[1]) == 0:
+        return
+    for index in range(8):
+        dfs(l, [x[0] + dx[index], x[1] + dy[index]], y)
+        counts += 1
+
+
 def solution(l, x, y):
-    #가장 작은값 찾기;
+    # 가장 작은값 찾기;
     answerlist = []
-    return
+    global counts
+
+    counts = 0
+
+    dfs(l, x, y)
+
+    return counts
 
 
 if __name__ == '__main__':
+    sys.setrecursionlimit(10 ** 7)
+
     n = 3
 
     l = 8
     x = [0, 0]
+
     y = [7, 0]
 
     print(solution(l, x, y))
