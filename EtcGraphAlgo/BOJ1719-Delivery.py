@@ -39,26 +39,91 @@
 # 3 2 3 - 6 6
 # 2 2 3 6 - 6
 # 5 5 3 4 5 -
+from collections import deque
 
-# 최소 신장 트리?
+
+# 다익스트라로 구현하고자 했으나 실패..
+# # 최소 신장 트리?
+# def solution(n, timetable):
+#     # 최소값 경로를 저장 할 테이블 만들기 저장할 테이블 만들기
+#     answer = [[]]
+#
+#     # 경로 테이블을 만들기
+#     routetable = [['-' for _ in range(n + 1)] for _ in range(n + 1)]
+#     for route in timetable:
+#         routetable[route[0]][route[1]] = route[2]
+#
+#     for indexY in range(1, len(routetable)):
+#         # 결과값 담을 테이블
+#         dp = [1001] * (n + 1)
+#         # 방문을 체크해줄 필수
+#         visited = [False] * (n + 1)
+#         visited[0] = True
+#         # 탐색을 할 큐
+#         queue = deque()
+#         for indexX in range(1, len(routetable)):
+#
+#             if routetable[indexY][indexX] != '-':
+#                 dp[indexX] = routetable[indexY][indexX]
+#                 visited[indexX] = True
+#
+#         # 방문하지 않는 배열이 있다면 체크
+#         while not all(visited):
+#
+#
+#         # 1일때 2 ,3 하고
+#         # 그리고 2, 3 bfs
+#         # 근데 만약 크다? 그럼 바로 내팽겨 치기
+#         # 그리고 방문 했던 곳이다? 그럼 방문 하지마
+#         answer.append(dp)
+#     print(answer)
+
+
 def solution(n, timetable):
-    # 최소값 경로를 저장 할 테이블 만들기 저장할 테이블 만들기
-    mintable = [['-']*(n+1)]*(n+1)
-
+    # 최소값 경로 저장할 테이블 만들기
+    answer = [["-" for _ in range(n + 1)] for _ in range(n + 1)]
     # 경로 테이블을 만들기
-    routetable = [["-"]*(n+1)]*(n+1)
+    routetable = [[1e9 for _ in range(n + 1)] for _ in range(n + 1)]
+
+    # 자기 자신으로 가는 비용은 0 으로 초기화
+    for y in range(1, n + 1):
+        for x in range(1, n + 1):
+            if y == x:
+                routetable[y][x] = 0
+
 
     for route in timetable:
+        # 그래프의 가중치 값 추가
         routetable[route[0]][route[1]] = route[2]
+        # 반대 것도 해줘야함
+        routetable[route[1]][route[0]] = route[2]
 
-    print(routetable)
+        # 정답 배열에 맨 처음 최단거리  가는거 추가
+        answer[route[0]][route[1]] = route[1]
+        # 반대 노드도 해줘야 한다
+        answer[route[1]][route[0]] = route[0]
 
-    return
+    # 플로이드 워셜 알고리즘
+    for tempnode in range(1, n + 1):  # 거쳐가는 노드
+        for startnode in range(1, n + 1):  # 시작 노드
+            for endnode in range(1, n + 1):  # 끝나는 노드
+                if routetable[startnode][endnode] > routetable[startnode][tempnode] + routetable[tempnode][endnode]:
+                    # 비용을 최단 거리로 갱신
+                    routetable[startnode][endnode] = routetable[startnode][tempnode] + routetable[tempnode][endnode]
+                    # 먼저 들러야하는 지점인 (a, k)의 집하장 값으로 갱신
+                    answer[startnode][endnode] = answer[startnode][tempnode]
+
+    # 맨 처음 것 제거
+    for arrays in answer:
+        arrays.remove('-')
+
+    return answer
 
 
 if __name__ == '__main__':
     n, m = 6, 10
     # 노드 1 , 노드 2 , 시간
+
     timetable = [
         [1, 2, 2],
         [1, 3, 1],
@@ -71,4 +136,11 @@ if __name__ == '__main__':
         [4, 6, 4],
         [5, 6, 2]
     ]
-    print(solution(n, timetable))
+    #
+    n, m = map(int , input().split())
+
+    timetable = [list(map(int, input().split()))for _ in range(m)]
+
+    answer = solution(n, timetable)
+    for index in range(1,len(answer)):
+        print(*answer[index])
