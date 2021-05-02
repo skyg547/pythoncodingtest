@@ -73,6 +73,8 @@ if __name__ == '__main__':
     l = [input() for _ in range(n)]
     solution(l)
 
+# 카운터를 사용해보자 ~
+
 # # 반례 1
 # 10
 # dc
