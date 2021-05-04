@@ -64,18 +64,15 @@
 #     return answer
 
 # 정답
-def solution(numbers):
+# def solution(numbers):
+#
+#     print(numbers)
+#     numbers = list(map(str, numbers))
+#     numbers.sort(key=lambda x : x*3,reverse=True)
+#     print(numbers)
+#
+#     return str(int(''.join(numbers)))
 
-    print(numbers)
-    numbers = list(map(str, numbers))
-    numbers.sort(key=lambda x : x*3,reverse=True)
-    print(numbers)
-
-    return str(int(''.join(numbers)))
-
-
-numbers = [6, 10, 2,30,34]
-print(solution(numbers))
 
 # # e다른해설
 # import functools
@@ -90,3 +87,14 @@ print(solution(numbers))
 #     n = sorted(n, key=functools.cmp_to_key(comparator),reverse=True)
 #     answer = str(int(''.join(n)))
 #     return answer
+
+def solution(numbers):
+    l = list(map(str, numbers))
+    l.sort(key=lambda x: (x[0]), reverse=True)
+
+    return l
+
+
+if __name__ == '__main__':
+    numbers = [6, 10, 2, 30, 34]
+    print(solution(numbers))
