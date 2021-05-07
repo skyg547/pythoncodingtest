@@ -37,9 +37,7 @@ def solution(h, l):
 
 
 if __name__ == '__main__':
-    n, h = 14, 5
-    l = [1, 3, 4, 2, 2, 4, 3, 4, 3, 3, 3, 2, 3, 3]
 
     n, h = map(int, sys.stdin.readline().split())
-    l = [int(input()) for _ in range( n)]
+    l = [int(sys.stdin.readline()) for _ in range( n)]
     print(*solution(h, l))
