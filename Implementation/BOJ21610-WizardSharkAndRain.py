@@ -41,13 +41,11 @@ dx2 = [1, -1, -1, 1]
 
 # 구름 이동 함수
 def move(l, moving, cloud):
-    # 지정된 횟수를 반복해주면서
-    for i in range(moving[1]):
-        # 모든 구름들에게 방향 이동해준다
-        for cloudMove in cloud:
-            # 각 칸의 넘어가면 그 다음 칸으로 넘어가게 설정
-            cloudMove[0] = (cloudMove[0] + dx[moving[0] - 1]) % (len(l))
-            cloudMove[1] = (cloudMove[1] + dy[moving[0] - 1]) % (len(l))
+    # 모든 구름들에게 방향 이동해준다
+    for cloudMove in cloud:
+        # 각 칸의 넘어가면 그 다음 칸으로 넘어가게 설정
+        cloudMove[0] = (cloudMove[0] + (dx[moving[0] - 1] * moving[1])) % (len(l))
+        cloudMove[1] = (cloudMove[1] + (dy[moving[0] - 1] * moving[1])) % (len(l))
 
 
 # 비내리기
@@ -131,4 +129,5 @@ if __name__ == '__main__':
     n, m = map(int, input().split())
     l = [list(map(int, input().split())) for _ in range(n)]
     o = [list(map(int, input().split())) for _ in range(m)]
+
     print(solution(l, o))
