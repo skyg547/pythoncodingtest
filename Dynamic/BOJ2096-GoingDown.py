@@ -7,6 +7,7 @@ read = sys.stdin.readline
 
 
 def solution(temp, maxD, minD):
+    #
     maxD[1][0] = max(maxD[0][0], maxD[0][1]) + temp[0]
     minD[1][0] = min(minD[0][0], minD[0][1]) + temp[0]
 
@@ -25,6 +26,8 @@ if __name__ == '__main__':
     l = [[1, 2, 3],
          [4, 5, 6],
          [4, 9, 0]]
+
+    n = int(read())
 
     maxD = [[0 for _ in range(3)] for _ in range(2)]
     minD = [[0 for _ in range(3)] for _ in range(2)]
