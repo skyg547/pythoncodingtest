@@ -7,17 +7,20 @@ import sys
 def solution(n):
     answer1 = 1e9
     answer2 = [0]
+    cnt = 0
 
-    if n % 3 == 0:
-        n //= 3
-    elif n % 2 == 0:
-        n //= 2
-    else:
-        n -= 1
+    while n != 1:
+        cnt += 1
+        if n % 3 == 0:
+            n //= 3
+        elif n % 2 == 0:
+            n //= 2
+        else:
+            n -= 1
 
     # 1일때 그전 결과 값이랑 비교
     if n == 1:
-        answer1 = min(answer1, n)
+        answer1 = min(answer1, cnt)
         return answer1
 
 
