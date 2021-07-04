@@ -2,6 +2,16 @@
 # 안전 영역
 
 def solution(l):
+
+    rainHeight = 0
+    #비 최대 높이 구하기
+    for maxElement in l:
+        if rainHeight < max(maxElement):
+            rainHeight = max(maxElement)
+
+
+
+
     return
 
 
