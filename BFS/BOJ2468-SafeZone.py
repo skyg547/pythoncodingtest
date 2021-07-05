@@ -9,6 +9,7 @@ def solution(l):
         if rainHeight < max(maxElement):
             rainHeight = max(maxElement)
 
+    #비에프에스를 돌면서 구한다
 
 
 
