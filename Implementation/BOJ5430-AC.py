@@ -2,6 +2,8 @@
 # AC
 
 def solution():
+
+     # 덱으로 구현하여 앞뒤앞뒤앞뒤를 실행해준다
     return
 
 
