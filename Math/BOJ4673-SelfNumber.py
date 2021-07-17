@@ -9,7 +9,7 @@ def solution():
 if __name__ == '__main__':
 
     result = []
-    for index in range(9994):
+    for index in range(10001):
         result.append(index)
 
     for x in range(10001):
@@ -24,8 +24,6 @@ if __name__ == '__main__':
         for element in stringX:
             y += int(element)
 
-        if y > 10000:
-            break
         if y in result:
             result.remove(int(y))
 
