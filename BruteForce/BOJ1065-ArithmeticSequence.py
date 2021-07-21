@@ -8,7 +8,7 @@
 def solution(n):
     cnt = 0;
 
-    for number in range(11, n):
+    for number in range(n):
 
         if number >= 10:
             diffrens = abs(int(str(number)[1]) - int(str(number)[0]))
@@ -18,10 +18,10 @@ def solution(n):
 
         firstElement = int(str(number)[0])
         breakPoint = 0
-        for element in str(number):
-            if str(number).index(element) == 0: # 여기서 에러
+        for index, element in enumerate(str(number)):
+            if index == 0:  # 여기서 에러
+                # print(index)
                 continue
-
             if diffrens != abs(firstElement - int(element)):
                 breakPoint = 1
                 break
@@ -37,18 +37,18 @@ def solution(n):
 if __name__ == '__main__':
     n = int(input())
     print(solution(n))
-
-number = 111
-diffrens = abs(int(str(number)[1]) - int(str(number)[0]))
-
-firstElement = int(str(number)[0])
-
-for element in str(number):
-    if str(number).index(element) == 0:
-        continue
-
-    if diffrens != abs(firstElement - int(element)):
-        print("x")
-        break
-
-    firstElement = int(element)
+#
+# number = 111
+# diffrens = abs(int(str(number)[1]) - int(str(number)[0]))
+#
+# firstElement = int(str(number)[0])
+#
+# for element in str(number):
+#     if str(number).index(element) == 0:
+#         continue
+#
+#     if diffrens != abs(firstElement - int(element)):
+#         print("x")
+#         break
+#
+#     firstElement = int(element)
