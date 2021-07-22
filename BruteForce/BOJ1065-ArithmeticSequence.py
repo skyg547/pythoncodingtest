@@ -10,19 +10,19 @@ def solution(n):
 
     for number in range(n):
 
-        if number >= 10:
+        if number >= 100:
             diffrens = abs(int(str(number)[1]) - int(str(number)[0]))
         else:
             cnt += 1
             continue
 
-        firstElement = int(str(number)[0])
+        firstElement = int(str(number)[1])
         breakPoint = 0
         for index, element in enumerate(str(number)):
-            if index == 0:  # 여기서 에러
+            if index == 0 and index == 1:  # 여기서 에러
                 # print(index)
                 continue
-            if diffrens != abs(firstElement - int(element)):
+            if diffrens != firstElement - int(element):
                 breakPoint = 1
                 break
             firstElement = int(element)
