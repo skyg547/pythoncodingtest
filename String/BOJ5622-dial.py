@@ -8,11 +8,35 @@
 
 import re
 
-p = re.compile('ab*')
+# ABC
+# DEF
+#
 
-print(str(p))
-print(p.search('ca'))
+p = [
+    re.compile('[a-c]'),
+    re.compile('[d-f]'),
+    re.compile('[g-i]'),
+    re.compile('[j-l]'),
+    re.compile('[m-o]'),
+    re.compile('[p-s]'),
+    re.compile('[t-v]'),
+    re.compile('[w-z]')]
 
-print(ord('U')-ord('A'))
-print(ord('U'))
-print(ord('A'))
+answer = 0
+strings  = input()
+
+for char in strings:
+    for index, element in enumerate(p):
+        if element.match(char):
+            answer += (index + 3)
+            break
+
+print(answer)
+
+#
+# print(str(p))
+# print(p.search('ca'))
+#
+# print(ord('U') - ord('A'))
+# print(ord('U'))
+# print(ord('A'))
