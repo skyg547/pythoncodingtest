@@ -3,4 +3,13 @@
 
 if __name__ == '__main__':
     strings = input()
-    ljes = njak
+
+    s = ["c=",
+         "c-",
+         "dz=",
+         "d-",
+         "lj",
+         "nj",
+         "s=",
+         "z="]
+
