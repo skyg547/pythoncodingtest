@@ -12,4 +12,5 @@ if __name__ == '__main__':
          "nj",
          "s=",
          "z="]
-
+    re.compli =
+    /c=/
