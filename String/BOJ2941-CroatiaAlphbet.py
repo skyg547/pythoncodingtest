@@ -1,5 +1,6 @@
 # https://www.acmicpc.net/problem/2941
 # 크로아티아 알파벳
+import  re
 
 if __name__ == '__main__':
     strings = input()
@@ -12,5 +13,10 @@ if __name__ == '__main__':
          "nj",
          "s=",
          "z="]
-    re.compli =
-    /c=/
+
+    cnt = 0
+    for element in s:
+        if re.compile(element).search(strings) != None:
+           cnt += 1
+
+    print(cnt)
