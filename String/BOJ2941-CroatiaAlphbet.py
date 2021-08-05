@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     cnt = 0
     for element in s:
-        if re.compile(element).search(strings) != None:
+        if re.compile(strings).search(element) != None:
            cnt += 1
 
     print(cnt)
