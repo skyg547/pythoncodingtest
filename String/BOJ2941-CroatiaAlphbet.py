@@ -1,5 +1,8 @@
 # https://www.acmicpc.net/problem/2941
 # 크로아티아 알파벳
+
+#문제를 잘못 이해
+
 import  re
 
 if __name__ == '__main__':
