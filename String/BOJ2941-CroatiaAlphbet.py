@@ -1,12 +1,14 @@
 # https://www.acmicpc.net/problem/2941
 # 크로아티아 알파벳
 
-#문제를 잘못 이해
-
-import  re
+# 문제를 잘못 이해
+# 3개씩 가지고 와야 한다.
+import re
 
 if __name__ == '__main__':
     strings = input()
+
+    answerSet = set()
 
     s = ["c=",
          "c-",
@@ -20,6 +22,7 @@ if __name__ == '__main__':
     cnt = 0
     for element in s:
         if re.compile(element).search(strings) != None:
-           cnt += 1
-
-    print(cnt)
+            for char in element:
+                answerSet.add(char)
+        cnt += 1
+    print(len(answerSet))
