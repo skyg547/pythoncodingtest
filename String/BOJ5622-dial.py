@@ -13,19 +13,20 @@ import re
 #
 
 p = [
-    re.compile('[a-c]'),
-    re.compile('[d-f]'),
-    re.compile('[g-i]'),
-    re.compile('[j-l]'),
-    re.compile('[m-o]'),
-    re.compile('[p-s]'),
-    re.compile('[t-v]'),
-    re.compile('[w-z]')]
+    re.compile('[a-c]', re.IGNORECASE),
+    re.compile('[d-f]', re.IGNORECASE),
+    re.compile('[g-i]', re.IGNORECASE),
+    re.compile('[j-l]', re.IGNORECASE),
+    re.compile('[m-o]', re.IGNORECASE),
+    re.compile('[p-s]', re.IGNORECASE),
+    re.compile('[t-v]', re.IGNORECASE),
+    re.compile('[w-z]', re.IGNORECASE)]
 
 answer = 0
-strings  = input()
+strings = input()
 
 for char in strings:
+    # print(char)
     for index, element in enumerate(p):
         if element.match(char):
             answer += (index + 3)
