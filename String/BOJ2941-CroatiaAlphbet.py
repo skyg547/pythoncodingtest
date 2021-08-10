@@ -23,7 +23,6 @@ if __name__ == '__main__':
     cnt = 0
     for element in s:
         if re.compile(element).search(strings) != None:
-            for char in element:
-                answerSet.add(char)
-        cnt += 1
-    print(len(answerSet))
+            strings = strings.replace(element, '0')
+
+    print(len(strings))
