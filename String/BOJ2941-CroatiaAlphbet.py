@@ -3,6 +3,7 @@
 
 # 문제를 잘못 이해
 # 3개씩 가지고 와야 한다.
+# 문제 잘못 이해 크로아티아 알파벳도 하나에서 총 몇개의 알파벳이냐 !
 import re
 
 if __name__ == '__main__':
@@ -22,7 +23,6 @@ if __name__ == '__main__':
     cnt = 0
     for element in s:
         if re.compile(element).search(strings) != None:
-            for char in element:
-                answerSet.add(char)
-        cnt += 1
-    print(len(answerSet))
+            strings = strings.replace(element, '0')
+
+    print(len(strings))
