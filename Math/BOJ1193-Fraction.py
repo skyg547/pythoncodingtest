@@ -2,7 +2,6 @@
 # https://www.acmicpc.net/problem/1193
 
 def solution():
-    a, b, c = map(int, input().split())
 
     x = int(input())
     num_list = []
