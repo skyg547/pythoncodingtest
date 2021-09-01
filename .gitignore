@@ -1,4 +1,4 @@
-# 바이트 컴파일 / 최적화 / DLL 파일
+ # 바이트 컴파일 / 최적화 / DLL 파일
 __pycache __ /
 * .py [cod]
 * $ py.class
@@ -140,5 +140,8 @@ cython_debug /
 misc.xml
 *.iml
 
-.idea/misc.xml
+./.idea/misc.xml
+./.idea/pythoncodingtest.iml
+
 .idea/pythoncodingtest.iml
+.idea/misc.xml
