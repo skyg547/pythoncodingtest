@@ -8,5 +8,5 @@ if __name__ == '__main__':
 
     for _ in range(int(input())):
         a , b , c = map(int, input().split())
-        print(str(c%a)+str(c//b+1).zfill(len(str(c))))
+        print(str(c%a+1)+str(c%a+1).zfill(max(2,len(str(c)))))
 
