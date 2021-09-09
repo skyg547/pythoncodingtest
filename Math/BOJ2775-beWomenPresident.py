@@ -4,3 +4,11 @@
 def solution():
     return
 
+
+if __name__ == '__main__':
+    2
+    1
+    3
+    2
+    3
+
