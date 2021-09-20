@@ -53,13 +53,19 @@
 #-----------------------------------------------
 
 
-def solution():
-    return
+def solution(k):
+
+    array = [[1],[2],[3]]
+
+    return k
 
 
 
 
+if __name__ == '__main__':
 
+    k = 3
+    solution(k)
 
 
 
