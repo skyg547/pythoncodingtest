@@ -4,5 +4,10 @@
 def solution():
     return
 
+
 if __name__ == '__main__':
-    s = input()
+    s = int(input())
+
+    lists = [list(map(int, input().split())) for _ in range(s)]
+
+    print(lists)
