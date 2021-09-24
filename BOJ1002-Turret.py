@@ -1,7 +1,44 @@
 # 터렛
 # https://www.acmicpc.net/problem/1002
+import math
 
-def solution():
+
+def solution(alllists):
+    for lists in alllists:
+        distance = lists[2] + lists[-1]
+
+        distanceFor2People = int(math.sqrt((lists[0] - lists[3]) ** 2 + (lists[1] - lists[4]) ** 2))
+
+        # 같지 않은 경우
+        if distanceFor2People != 0:
+            # 거리가 더 클 때
+            if lists[-1] == distanceFor2People + lists[2] or lists[2] == distanceFor2People + lists[-1]:
+             print(1)
+            elif distance > distanceFor2People:
+                # 2개 점 교차
+                if not (distanceFor2People < lists[2] or distanceFor2People < lists[-1]):
+                    print(2)
+                # 안쪽으로 포함
+                else:
+                    print(0)
+                    # 외접
+            elif distance == distanceFor2People:
+                print(1)
+                # 내접
+            else:
+                print(0)
+            # print(distance , distanceFor2People)
+        else:
+            if lists[2] == lists[-1]:
+                print(-1)
+            else:
+                print(0)
+    # 두 점과 거리와 길이가 같냐
+
+    # 두 점 거리와 길이가 작냐
+
+    # 두 점 거리와 길이가 크냐
+
     return
 
 
@@ -10,4 +47,6 @@ if __name__ == '__main__':
 
     lists = [list(map(int, input().split())) for _ in range(s)]
 
-    print(lists)
+    solution(lists)
+
+    # print(lists)
