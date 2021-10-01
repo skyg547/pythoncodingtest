@@ -10,7 +10,7 @@
 
 
 
-def solution():
+def solution(t ,l):
     return
 
 
@@ -19,3 +19,4 @@ if __name__ == '__main__':
     l = [[0, 3],
          [1, 5]
          [45, 50]]
+      solution(t,l)
