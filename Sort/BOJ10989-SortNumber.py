@@ -6,16 +6,8 @@ def solution():
 
 
 if __name__ == '__main__':
-    N = 10
-    number = [
-        5,
-        2,
-        3,
-        1,
-        4,
-        2,
-        3,
-        5,
-        1,
-        7]
-    solution()
+
+    N = int(input())
+    number = [int(input()) for _ in range(N)]
+
+    print(sorted(number))
