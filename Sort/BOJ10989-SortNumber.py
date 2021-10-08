@@ -10,4 +10,4 @@ if __name__ == '__main__':
     N = int(input())
     number = [int(input()) for _ in range(N)]
 
-    print(sorted(number))
+    print((number).sort())
