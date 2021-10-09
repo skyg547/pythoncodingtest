@@ -1,6 +1,9 @@
 # https://www.acmicpc.net/problem/10989
 # 수정렬하기 3
 
+import sys
+input = sys.stdin.readline
+
 def solution():
     return
 
