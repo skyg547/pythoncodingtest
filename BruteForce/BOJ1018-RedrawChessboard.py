@@ -10,10 +10,14 @@ def solution(l, type1, type2):
 
     # l의 줄의 8 번째 인덱스 까지만 돌기
 
-    #첫 줄 돌기
+    # 첫 줄 돌기
     for index, element in enumerate(l):
+        if index > 7:
+            break
         #  각각 인덱스 비교       print(index, element)
         for index2, element2 in enumerate(element):
+            if index > 7:
+                continue
             # 정답이랑 다른지 비교
             if type1[index][index2] is not element2:
                 minimum += 1
@@ -35,16 +39,12 @@ def solution(l, type1, type2):
 
 
 if __name__ == '__main__':
-    n = 8
-    m = 8
-    l = ['WBWBWBWB',
-         'BWBWBWBW',
-         'WBWBWBWB',
-         'BWBBBWBW',
-         'WBWBWBWB',
-         'BWBWBWBW',
-         'WBWBWBWB',
-         'BWBWBWBW']
+    n = 10
+    m = 13
+
+    l = [
+        'BBBBBBBBWBWBW', 'BBBBBBBBBWBWB', 'BBBBBBBBWBWBW', 'BBBBBBBBBWBWB', 'BBBBBBBBWBWBW', 'BBBBBBBBBWBWB',
+        'BBBBBBBBWBWBW', 'BBBBBBBBBWBWB', 'WWWWWWWWWWBWB', 'WWWWWWWWWWBWB']
 
     type1 = ['WBWBWBWB',
              'BWBWBWBW',
@@ -55,16 +55,16 @@ if __name__ == '__main__':
              'WBWBWBWB',
              'BWBWBWBW']
 
-    type2 = [
-        'BWBWBWBW',
-        'WBWBWBWB',
-        'BWBWBWBW',
-        'WBWBWBWB',
-        'BWBWBWBW',
-        'WBWBWBWB',
-        'BWBWBWBW',
-        'WBWBWBWB'
-    ]
+type2 = [
+    'BWBWBWBW',
+    'WBWBWBWB',
+    'BWBWBWBW',
+    'WBWBWBWB',
+    'BWBWBWBW',
+    'WBWBWBWB',
+    'BWBWBWBW',
+    'WBWBWBWB'
+]
 
-    returnValue = solution(l, type1, type2)
-    print(returnValue)
+returnValue = solution(l, type1, type2)
+print(returnValue)
