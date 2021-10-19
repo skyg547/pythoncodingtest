@@ -16,7 +16,7 @@ def solution(l, type1, type2):
             break
         #  각각 인덱스 비교       print(index, element)
         for index2, element2 in enumerate(element):
-            if index > 7:
+            if index2 > 7:
                 break
             # 정답이랑 다른지 비교
             if type1[index][index2] is not element2:
@@ -29,7 +29,7 @@ def solution(l, type1, type2):
 
     for index, element in enumerate(l):
         #        print(index, element)
-        if index > 7:
+        if index2 > 7:
             break
         for index2, element2 in enumerate(element):
             if index > 7:
