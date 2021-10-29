@@ -25,7 +25,6 @@ def solution(l, type1, type2):
     if tempMinmum > minimum:
         tempMinmum = minimum
 
-    minimum = 0
 
     for index, element in enumerate(l):
         #        print(index, element)
