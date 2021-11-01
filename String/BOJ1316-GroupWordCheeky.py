@@ -30,7 +30,7 @@
 #     print(count)
 
 # 정답
-n = int(input())
+n = 0
 
 group_word = 0
 
@@ -46,4 +46,20 @@ for _ in range(n):
         group_word += 1  # error가 0이면 그룹단어
 
 
-print(group_word)
+#print(group_word)
+
+
+
+import re
+
+strings = 'aaabbb'
+print(strings)
+
+reg  = '*(*[a-zA-Z])'
+
+re.complie(reg)
+
+print(len(re.findall()))
+
+
+
