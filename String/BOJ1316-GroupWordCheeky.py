@@ -28,6 +28,7 @@
 #         count += solution(input())
 #
 #     print(count)
+import re
 
 # 정답
 n = 0
@@ -50,14 +51,13 @@ for _ in range(n):
 
 
 
-import re
 
 strings = 'aaabbb'
 print(strings)
 
 reg  = '*(*[a-zA-Z])'
 
-re.complie(reg)
+#re.compile(strings, reg)
 
 print(len(re.findall()))
 
