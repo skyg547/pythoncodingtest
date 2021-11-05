@@ -54,12 +54,9 @@ for _ in range(n):
 
 strings = 'aaabbb'
 print(strings)
+reg  = '*[a-zA-Z]'
+re.compile(reg)
 
-reg  = '*(*[a-zA-Z])'
-
-#re.compile(strings, reg)
-
-print(len(re.findall()))
-
+#print((re.findall(reg, strings)))
 
 

@@ -1,2 +1,2 @@
 language = "python3"
-run = "python timeLog.py"
+run = "python String/BOJ1316-GroupWordCheeky.py"
