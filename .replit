@@ -1,2 +1,2 @@
 language = "python3"
-run = "python String/BOJ1316-GroupWordCheeky.py"
+run "python QANDS/BOJ10828-Stack.py"
