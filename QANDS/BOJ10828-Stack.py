@@ -3,9 +3,24 @@
 def solution(arr): 
   stack = []
 
+  for command in arr: 
+    commands = command.split()
 
-
+    if commands[0] == 'push' :
+      stack.append(commands[1])
+    elif commands[0] == 'size': 
+      print(len(stack))
+    elif command[0] == 'pop' :
+      print(stack.pop())
+    elif command[0] == 'top' :
+      print(stack[-1])
+    elif command[0] == 'empty' :
+      if len(stack) == 0 :  
+        print(1)
+      else :
+        print(0)
+      
 i = input()
 
-arr = [input for _ in range(i)]
+arr = [input() for _ in range(i)]
 solution(arr)
