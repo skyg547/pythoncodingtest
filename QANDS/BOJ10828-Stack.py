@@ -20,7 +20,7 @@ def solution(arr):
       else :
         print(0)
       
-i = input()
+i = int(input())
 
 arr = [input() for _ in range(i)]
 solution(arr)
