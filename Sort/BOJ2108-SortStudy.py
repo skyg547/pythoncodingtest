@@ -10,10 +10,10 @@ def solution(arrayOfNumber):
 
   arrayOfNumber.sort()
   print(sum(arrayOfNumber)/len(arrayOfNumber))
-
-print(arrayOfNumber[len(arrayOfNumber)])
-    print(Counter(arrayOfNumber)[0][0])
-print(arrayOfNumber[-1]-arrayOfNumer[0])
+  print(arrayOfNumber[len(arrayOfNumber)])
+  c = Counter(arrayOfNumber)
+  print(Counter(arrayOfNumber)[0][0])
+  print(arrayOfNumber[-1] - arrayOfNumber[0])
 
 n = int(input())
 
