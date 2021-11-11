@@ -1,2 +1,2 @@
 language = "python3"
-run =  "python QANDS/BOJ10828-Stack.py"
+run =  "python Sort/BOJ1427-SortInside.py"
