@@ -1,7 +1,7 @@
 def solution(numberArray):
-  numberArray.sort(-1)
+  numberArray.sort(key = -1)
   print(numberArray)
+  
+number = list(map(int, input().split()))
 
-
-number = list(map(int, input().split(sep, maxsplit))
-solution(number)
+print(solution(number))
