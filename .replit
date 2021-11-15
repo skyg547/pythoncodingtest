@@ -1,2 +1,2 @@
 language = "python3"
-run =  "python Sort/BOJ1121-WordSort.py"
+run =  "python Sort/BOJ11621-SortLocation2.py"
