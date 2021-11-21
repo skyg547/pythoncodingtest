@@ -6,13 +6,15 @@
 #범위 : N개의 수들 중 최댓값과 최솟값의 차이
 #N개의 수가 주어졌을 때, 네 가지 기본 통계값을 구하는 프로그램을 작성하시오
 
+from collections import Counter
+
 def solution(arrayOfNumber):
 
   arrayOfNumber.sort()
-  print(sum(arrayOfNumber)/len(arrayOfNumber))
-  print(arrayOfNumber[len(arrayOfNumber)])
+  print(int(sum(arrayOfNumber)/len(arrayOfNumber)))
+  print(arrayOfNumber[int(len(arrayOfNumber)/2)-1])
   c = Counter(arrayOfNumber)
-  print(Counter(arrayOfNumber)[0][0])
+  print(Counter(arrayOfNumber).most_common()[1][0])
   print(arrayOfNumber[-1] - arrayOfNumber[0])
 
 n = int(input())
