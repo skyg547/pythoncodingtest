@@ -11,17 +11,20 @@ import sys
 
 input = sys.stdin.readline
 
+
 def solution(arrayOfNumber):
     arrayOfNumber.sort()
     print(round(sum(arrayOfNumber) / len(arrayOfNumber)))
-    print(arrayOfNumber[int((len(arrayOfNumber)-1) / 2)])
+    print(arrayOfNumber[int((len(arrayOfNumber) - 1) / 2)])
     c = Counter(arrayOfNumber).most_common()
-    print(max(c, key = lambda  x: x[1]))
-    print(c)
     if len(c) != 1:
-      print(c[1][0])
-    else :
-      print(c[0][0])
+        if c[1][0] == c[0][0]:
+            print(c[1][0])
+        else:
+            print(max(c, key=lambda x: x[1])[0])
+
+    else:
+        print(max(c, key=lambda x: x[1])[0])
     print(arrayOfNumber[-1] - arrayOfNumber[0])
 
 
