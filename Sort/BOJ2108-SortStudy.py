@@ -18,7 +18,7 @@ def solution(arrayOfNumber):
     print(arrayOfNumber[int((len(arrayOfNumber) - 1) / 2)])
     c = Counter(arrayOfNumber).most_common()
     if len(c) != 1:
-        if c[1][0] == c[0][0]:
+        if c[1][1] == c[0][1]:
             print(c[1][0])
         else:
             print(max(c, key=lambda x: x[1])[0])
