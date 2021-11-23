@@ -7,13 +7,17 @@
 # N개의 수가 주어졌을 때, 네 가지 기본 통계값을 구하는 프로그램을 작성하시오
 
 from collections import Counter
+import sys
 
+input = sys.stdin.readline
 
 def solution(arrayOfNumber):
     arrayOfNumber.sort()
     print(round(sum(arrayOfNumber) / len(arrayOfNumber)))
-    print(arrayOfNumber[int(len(arrayOfNumber) / 2) - 1])
+    print(arrayOfNumber[int((len(arrayOfNumber)-1) / 2)])
     c = Counter(arrayOfNumber).most_common()
+    print(max(c, key = lambda  x: x[1]))
+    print(c)
     if len(c) != 1:
       print(c[1][0])
     else :
@@ -27,7 +31,5 @@ arr = []
 
 for _ in range(n):
     arr.append(int(input()))
-
-arrays = [5, 1, 3, 8, -2, 2]
 
 solution(arr)
