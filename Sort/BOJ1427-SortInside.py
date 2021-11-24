@@ -1,7 +1,12 @@
 def solution(numberArray):
-  numberArray.sort(key = -1)
-  print(numberArray)
-  
-number = list(map(int, input().split()))
+    print(''.join(list(map(str,sorted(numberArray, reverse=True)))))
 
-print(solution(number))
+
+#
+# number = list(map(int, input().split()))
+
+number = list(input())
+
+s = list(map(int, number))
+
+solution(s)
