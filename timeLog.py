@@ -32,3 +32,5 @@ start_time = time.time();
 end_time = time.time();
 print("time : ", end_time - start_time) # 수행 시간 출력
 
+print(*[1,3,4,21,4])
+
