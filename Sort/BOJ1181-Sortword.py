@@ -1,4 +1,19 @@
-def solution(x):
- sorted(x)
+# https://www.acmicpc.net/problem/1181
 
-print(solution(input()))
+def solution(x):
+    return sorted(x, key= lambda x : (len(x), x))
+
+
+print(solution(['but',
+                'i',
+                'wont',
+                'hesitate',
+                'no',
+                'more',
+                'no',
+                'more',
+                'it',
+                'cannot',
+                'wait',
+                'im',
+                'yours']))
