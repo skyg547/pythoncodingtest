@@ -7,8 +7,9 @@ def solution(x):
 number = int(input())
 wordList = [input() for _ in range(number)]
 
-for word in solution(wordList):
+for word in solution(set(wordList)):
     print(word)
+
 # print(*solution(wordList))
 #
 # print(solution(['but',
