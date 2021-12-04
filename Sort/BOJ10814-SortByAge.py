@@ -4,7 +4,7 @@
 def solution(array):
 
 
-	return sorted(array, key = lambda x : (int(x[0]), x[2]) )
+	return sorted(array, key = lambda x : (int(x[0]), int(x[2])) )
 
 number = int(input())
 
