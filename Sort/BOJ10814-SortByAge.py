@@ -4,12 +4,16 @@
 def solution(array):
 
 
-	return sorted(array, key = lambda x : (x[0], x[1]) )
+	return sorted(array, key = lambda x : (int(x[0]), x[2]) )
 
 number = int(input())
 
-humanList = [list(input().split()) for _ in range(number)]
+# print(list([2,3]+3))
+
+humanList = [list((input()+' '+str(i)).split()) for i in range(number)]
+
+
 
 for listElement in solution(humanList):
-	print(*listElement)
+	print(*listElement[:2:])
 
