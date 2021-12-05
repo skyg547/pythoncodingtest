@@ -1,6 +1,6 @@
 # https://www.acmicpc.net/problem/18870
 # 좌표 압축
-# sortedList.index(element) o(n) 시간 복잡도
+# sortedList.index(element) o(n) 시간 복잡도 시간 초과
 
 import sys
 
