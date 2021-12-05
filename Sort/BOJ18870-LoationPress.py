@@ -1,13 +1,16 @@
 # https://www.acmicpc.net/problem/18870
 # 좌표 압축
 
+import sys
+
+input = sys.stdin.readline
 
 def solution(lists) :
     answerLists = []
-    print()
+    sortedList = sorted(set(lists))
 
     for element in lists :
-        answerLists.append(sorted(set(lists)).index(element))
+        answerLists.append(sortedList.index(element))
 
     return answerLists
 
