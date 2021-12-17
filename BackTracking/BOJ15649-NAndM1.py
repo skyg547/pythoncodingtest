@@ -9,4 +9,5 @@ def solution(n,m):
     return answer
 
 if __name__ == '__main__':
+    n = list(map(int, input().split()))
     print(solution(4,4))
