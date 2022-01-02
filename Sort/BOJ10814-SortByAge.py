@@ -7,8 +7,8 @@ def solution(array):
 	return sorted(array, key = lambda x : (x[0], x[2]) )
 
 
-print(solution([[21, "junky", 0], [22, "dogu", 1], [21, "ho", 2]]))
-	return sorted(array, key = lambda x : (int(x[0]), int(x[2])) )
+# print(solution([[21, "junky", 0], [22, "dogu", 1], [21, "ho", 2]]))
+# 	return sorted(array, key = lambda x : (int(x[0]), int(x[2])) )
 
 number = int(input())
 

@@ -1,6 +1,4 @@
 language = "python3"
-<<<<<<< HEAD
 run =  "python NavsrTest/TEST2.py"
-=======
 run =  "python Sort/BOJ10814-SortByAge.py"
->>>>>>> a9f2226b0caf86bc64dde4d2a0e0e24de4f36904
+run =  "python Sort/BOJ10814-SortByAge.py"
