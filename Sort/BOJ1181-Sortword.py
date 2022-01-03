@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+def solution(x):
+ sorted(x)
+
+print(solution(input()))
+=======
+>>>>>>> a9f2226b0caf86bc64dde4d2a0e0e24de4f36904
 # https://www.acmicpc.net/problem/1181
 
 def solution(x):
