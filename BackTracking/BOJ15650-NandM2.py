@@ -8,5 +8,6 @@ def solution(n, m):
 
 
 if __name__ == '__main__':
-    for element in solution(4, 2):
+    n , m = map(int , input().split())
+    for element in solution(n,m):
         print(*element)
