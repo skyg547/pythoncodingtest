@@ -55,3 +55,9 @@
 # re.compile(reg)
 #
 # # print((re.findall(reg, strings)))
+
+if __name__ == '__main__':
+    3
+    happy
+    new
+    year
