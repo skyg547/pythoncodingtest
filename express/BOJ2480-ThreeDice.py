@@ -3,11 +3,12 @@ from collections import Counter
 
 if __name__ == '__main__':
 
-    m = list(map(int,input().split()))
-    count = sorted(Counter(m), reverse = True)
-    if (len(count) == len(m)):
-        print(max(count)*100)
+    m = list(map(int, input().split()))
+    count = sorted(list(Counter(m).most_common()), reverse=True, key=lambda x: x[1])
+    if len(count) == len(m):
+
+        print(max(count, key=lambda x: x[0])[0] * 100)
     elif len(count) == 1:
-        print(count.pop()*1000+10000)
+        print(count[0][0] * 1000 + 10000)
     else:
-        print(count.pop() * 100 + 1000)
+        print(count[0][0] * 100 + 1000)
