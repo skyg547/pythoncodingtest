@@ -50,7 +50,7 @@
 # for row in data:
 #     print(*row)
 #
-#-----------------------------------------------
+# -----------------------------------------------
 
 # 일단 될때까지 다 옮기고
 # 다시 옭기고
@@ -61,26 +61,18 @@
 
 
 def solution(k):
-
     print(k)
-    for number in range(1,10):
+    for number in range(1, 10):
         if number == 5:
             print(' ', end='')
             continue
-        print('*', end= '')
+        print('*', end='')
 
-        if number % 3 == 0 :
+        if number % 3 == 0:
             print()
     return k
 
 
-
-
 if __name__ == '__main__':
-
     k = 3
     solution(k)
-
-
-
-
