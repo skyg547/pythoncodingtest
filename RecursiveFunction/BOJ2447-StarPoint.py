@@ -62,8 +62,15 @@
 
 def solution(k):
 
-    array = [[1],[2],[3]]
+    print(k)
+    for number in range(1,10):
+        if number == 5:
+            print(' ', end='')
+            continue
+        print('*', end= '')
 
+        if number % 3 == 0 :
+            print()
     return k
 
 
