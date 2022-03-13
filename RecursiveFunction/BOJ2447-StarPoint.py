@@ -60,19 +60,29 @@
 # 옮기면서 출력
 
 
-def solution(k):
-    print(k)
-    for number in range(1, 10):
-        if number == 5:
-            print(' ', end='')
-            continue
-        print('*', end='')
-
-        if number % 3 == 0:
-            print()
-    return k
-
-
+# def solution(k):
+#
+#     for number in range(1, 10):
+#         if number == 5:
+#             print(' ', end='')
+#             continue
+#         print('*', end='')
+#
+#         if number % 3 == 0:
+#             print()
+#     return k
+#
+#
+def printStar(k):
+    printdata = [['']*k for _ in range(k)]
+    for row in range(k):
+        for col in range(k):
+            printdata[row][col] = '*'
+    return printdata
 if __name__ == '__main__':
+
     k = 3
-    solution(k)
+
+    for star in printStar(k):
+        print(*star)
+
