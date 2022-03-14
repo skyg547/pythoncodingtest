@@ -73,16 +73,23 @@
 #     return k
 #
 #
+
 def printStar(k):
-    printdata = [['']*k for _ in range(k)]
+    printdata = [['-'] * k for _ in range(k)]
     for row in range(k):
+        # if
         for col in range(k):
-            printdata[row][col] = '*'
+            if row % 3 == 1 and col % 3 == 1:
+                pass
+            else:
+                printdata[row][col] = '*'
+
     return printdata
+
+
 if __name__ == '__main__':
 
-    k = 3
+    k = 9
 
     for star in printStar(k):
         print(*star)
-
