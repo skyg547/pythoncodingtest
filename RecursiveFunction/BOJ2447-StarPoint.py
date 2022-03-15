@@ -74,19 +74,33 @@
 #
 #
 
+def removestar(k):
+    if k == 1:
+        return
+
+    for row in range(k // 3, k // 3 + k // 3):
+        for col in range(k // 3, k // 3 + k // 3):
+            printdata[row][col] = ' '
+
+    removestar(k//3)
+
 def printStar(k):
+    global printdata
     printdata = [['-'] * k for _ in range(k)]
     for row in range(k):
         # if
         for col in range(k):
-                printdata[row][col] = '*'
+            printdata[row][col] = '*'
+    removestar(k)
 
     return printdata
 
 
 if __name__ == '__main__':
 
-    k = 3
+    k = 27
 
     for star in printStar(k):
-        print(*star)
+        for miniStar in star:
+            print(miniStar, end='')
+        print()
