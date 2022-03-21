@@ -78,8 +78,8 @@ def removestar(k):
     if k == 1:
         return
 
-    for row in range(k // 3, k // 3 + k // 3):
-        for col in range(k // 3, k // 3 + k // 3):
+    for row in range(k // 3, k // 3 + k % 3):
+        for col in range(k // 3, k // 3 + k % 3):
             printdata[row][col] = ' '
 
     removestar(k//3)
