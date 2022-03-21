@@ -98,7 +98,7 @@ def printStar(k):
 
 if __name__ == '__main__':
 
-    k = 27
+    k = 9
 
     for star in printStar(k):
         for miniStar in star:
