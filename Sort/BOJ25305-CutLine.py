@@ -3,7 +3,7 @@
 
 import sys
 
-shortcutInput = sys.stdin.readline()
+shortcutInput = sys.stdin.readline
 
 
 def getCutLine(candidateList, winnerCount):
@@ -11,7 +11,7 @@ def getCutLine(candidateList, winnerCount):
 
 
 if __name__ == '__main__':
-    candidate, winnerCount = map(int, shortcutInput.split())
+    candidate, winnerCount = map(int, shortcutInput().split())
 
-    candidateList = list(map(int, input().split()))
+    candidateList = list(map(int, shortcutInput().split()))
     print(*getCutLine(candidateList, winnerCount))
