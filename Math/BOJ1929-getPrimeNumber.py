@@ -3,9 +3,7 @@
 # 소수 구하기
 #
 
-from audioop import add
 import sys
-import math
 from collections import deque
 
 shortcutInput = sys.stdin.readline
@@ -29,16 +27,18 @@ while len(numberLIst) != 0:
     testNumber = numberLIst.popleft()
     if testNumber in notPrimeList:
         continue
+    elif testNumber == 1:
+        primeList.add(testNumber)
+        continue
+
+    for deleteNumber in numberLIst:
+        if deleteNumber % testNumber == 0:
+            notPrimeList.add(deleteNumber)
 
     if isPrimeNumber(testNumber):
         primeList.add(testNumber)
 
-        for deleteNumber in numberLIst:
-            if deleteNumber % testNumber == 0:
-                notPrimeList.add(deleteNumber)
     else:
-        numberLIst.remove(testNumber)
+        notPrimeList.add(testNumber)
 
-
-print(numberLIst)
 print(primeList)
