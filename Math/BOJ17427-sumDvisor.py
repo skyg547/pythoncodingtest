@@ -23,19 +23,12 @@
 
 
 import sys
-import math
-from collections import deque
 
 inputShortCut = sys.stdin.readline
 
 if __name__ == '__main__':
     maxNumber = int(inputShortCut())
-    dvisors = deque()
+    sumDvisors = 0
     for number in range(1, maxNumber + 1):
-        for dvisor in range(1, number + 1):
-            # print(dvisor)
-            # print(number % dvisor)
-            if number % dvisor == 0:
-                dvisors.append(dvisor)
-
-    print(sum(dvisors))
+        sumDvisors += (maxNumber // number) * number
+    print(sumDvisors)
