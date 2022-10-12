@@ -10,7 +10,6 @@
 
 
 import sys
-import math
 
 
 # 8 = 3 + 5
@@ -24,32 +23,28 @@ def prime_list(n):
     # n의 최대 약수가 sqrt(n) 이하이므로 i=sqrt(n)까지 검사
     m = int(n ** 0.5)
     for i in range(2, m + 1):
-        if sieve[i] == True:           # i가 소수인 경우
-            for j in range(i+i, n, i):  # i이후 i의 1배수들을 False 판정
+        if sieve[i] == True:  # i가 소수인 경우
+            for j in range(i + i, n, i):  # i이후 i의 1배수들을 False 판정
                 sieve[j] = False
 
-    # 소수 목록 산출
-    return [i for i in range(2, n) if sieve[i] == True]
+    # 정해진 배열이 소수 여부 반환
+    return sieve
 
 
-oddPrimeList = prime_list(1000000)
+primeList = prime_list(1000000)
 
 while True:
     numbers = int(sys.stdin.readline())
     if numbers == 0:
         break
 
-    list1 = list(filter(lambda x: x < numbers and x % 2 == 1, oddPrimeList))
-    list2 = reversed(list1)
     isPrint = False
-    for oddPrime1 in list2:
-        for oddPrime2 in list1:
-            if oddPrime1 + oddPrime2 == numbers:
-                print(str(numbers) + ' = '+str(oddPrime2) +
-                      ' + ' + str(oddPrime1))
-                isPrint = True
-                break
-            if isPrint:
-                break
+    for primeIndex in range(3, len(primeList)):  # 1은 소수가 아니고 2는 짝수라 3부터 시작
+        if primeList[primeIndex] and primeList[numbers - primeIndex]:  # 2개다 소수 일 경우 출력
+            print(str(numbers) + ' = ' + str(primeIndex) +
+                  ' + ' + str(numbers - primeIndex))
+            isPrint = True
+            break
+
     if isPrint is False:
         print("Goldbach's conjecture is wrong.")
