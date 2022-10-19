@@ -4,18 +4,25 @@
 # 12345
 # 123456789 10 11
 
+# 1 10 100 1000 10000
+# 10 99
 
+import sys
+
+shortCutInput = sys.stdin.readline
 if __name__ == '__main__':
-    print(100000000)
-    number = 15
-    divideNumber = 10
+
+    number = int(shortCutInput())
+    divideNumber = 1
     numberLength = 1
     answer = 0
-    while number >= 1:
-        answer += (number % divideNumber) * numberLength
-        print(answer, number)
+    count = 0
+
+    # 10 자리수 이전 까지 더해주기  ex 154 일때 9*1 + 90*2
+    while number // divideNumber > 9:
+        answer += (((divideNumber * 10) - divideNumber) * numberLength)
         numberLength += 1
-        number //= divideNumber
+        divideNumber *= 10
 
-
+    answer += (number - divideNumber + 1) * numberLength  # 자기 자신 + (자리수 까지 포합 +1)  - 자릿수 * 문자 갯수
     print(answer)
