@@ -33,7 +33,7 @@ def getYear(calender):
         year += m
         tempY += m
         if tempY > n:
-            tempY = n if (x % n == 0) else (x % n)  # n 나머지가 다음수
+            tempY = n if (tempY % n == 0) else (tempY % n)  # n 나머지가 다음수, 0 으로 떨어질시 n
         if year > maxNumber:
             return -1
 
