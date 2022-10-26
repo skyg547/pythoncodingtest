@@ -23,42 +23,24 @@ if __name__ == '__main__':
     errorButtons = []
     if errorButtonCount != 0:
         errorButtons = list(map(int, shortCutInput().split()))
-    pressButtonCount = 0
-    if nowChannel == int(targetChannel):
-        print(0)
-        exit()
 
-    targetNumberSet = set(list(targetChannel))
-    pressButtonList = list()  # 가까운 버튼 리스트
+    # 가장 작은 횟수 카운트
+    minNumber = sys.maxsize
 
-    # 가장 가까운 버튼 리스트 구하기
-    for index, button in enumerate(targetChannel):
-        getNextToNumber = 0
-        while len(pressButtonList) != index + 1:
-            nextToNumberList = set()
-            plusNumber = int(button) + getNextToNumber
-            minusNumber = int(button) - getNextToNumber
-
-            if plusNumber not in errorButtons and plusNumber < 10:
-                nextToNumberList.add(int(button) + getNextToNumber)
-            if minusNumber not in errorButtons and minusNumber > -1:
-                nextToNumberList.add(int(button) + getNextToNumber)
-
-            if len(nextToNumberList) != 0:
-                pressButtonList.append(nextToNumberList)
+    # 모든 숫자 돌아 보기
+    for i in range(5000001):
+        # 버튼 클릭 가능 여부 확인
+        canButton = True
+        for stirngs in list(str(i)):
+            if int(stirngs) in errorButtons:
+                canButton = False
                 break
-
-            getNextToNumber += 1
-
-    # 가능한 모든 버튼리스트 구하기
-    # print(list(product(*list(pressButtonList))))
-    # setList = list(map(lambda x: ''.join(),  (list(product(*pressButtonList)))))
-    setList = [''.join(map(str, i)) for i in list(product(*pressButtonList))]
-
-    # print(((6, 6, 6).values()))
-    minNumber = min(setList, key=lambda x: abs(int(x) - int(targetChannel)))
+        # +,- 가는 횟수 구하기
+        tempMinNumber = abs(int(targetChannel) - 100)
+        # 숫자 +,- 가는 횟수 구하기
+        if canButton:
+            # 더 작은 것 출력
+            tempMinNumber = min(len(str(i)) + abs(int(i) - int(targetChannel)), tempMinNumber)
+        #  현재 가장 작은 횟수와 비교
+        minNumber = min(tempMinNumber, minNumber)
     print(minNumber)
-    print(abs(int(minNumber) - int(targetChannel)) + len(minNumber))
-
-    # for sets in setList:
-    #     print(tasets)
