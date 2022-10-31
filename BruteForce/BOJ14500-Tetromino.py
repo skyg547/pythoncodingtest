@@ -52,13 +52,12 @@
 # 7
 
 
-
-def solution(n, m, s):
+# 1차 시도 솔루션
+def solution1(n, m, s):
     answer = 0
     ansarray = []
     for i in s:
         print(i)
-
 
         if len(ansarray) < 4:
             ansarray.append(max(i))
@@ -71,6 +70,30 @@ def solution(n, m, s):
     answer = sum(ansarray)
 
     return answer
+
+
+#2차 시도 솔루션
+
+# 모든 방향이 경우를 구한다
+directions = [[()]]
+
+# 모든 점을 돌면서 합을 구하고
+
+# 기존 최대값과 비교한다
+
+def solution(n, m, s):
+    maxTetrominoValue = 0
+    print(*s)
+
+    for rowIndex, rowValue in enumerate(s):
+        for colIndex, colValue in enumerate(rowValue):
+            
+            
+            maxTetrominoValue = max(maxTetrominoValue, colValue)
+            print(rowIndex, colIndex, "value : ", colValue)
+
+    return maxTetrominoValue
+
 
 n = 4
 m = 5
