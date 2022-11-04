@@ -8,7 +8,7 @@ if __name__ == '__main__':
     for parentheis in parentheises:
         parentheisStack = []
         for strings in parentheis:
-            if len(parentheisStack) != 0 and strings != parentheisStack[-1]:
+            if len(parentheisStack) != 0 and strings != parentheisStack[-1] and strings == ')':
                 parentheisStack.pop()
                 continue
             parentheisStack.append(strings)
