@@ -57,7 +57,5 @@ anserString = ''
 # print all node
 node = firstNode
 while node:
-    anserString += node.val
+    print(node.val, end='')
     node = node.next
-# for order in orders:
-print(anserString)
