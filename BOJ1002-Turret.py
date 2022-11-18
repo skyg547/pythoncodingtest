@@ -9,8 +9,8 @@ if __name__ == '__main__':
 
     for location in inputCase:
         distation = math.dist((location[0], location[1]), (location[3], location[4]))
-        # if distation == 0 and location[2] - location[5] == 0: # 일치할때
-        #     print(-1)
+        if distation == 0 and location[2] - location[5] == 0: # 일치할때
+            print(-1)
         elif abs(location[2] - location[5]) == distation or location[2] + location[5] == distation:  # 내접 외접
             print(1)
         elif location[2] + location[5] > distation > abs(location[2] - location[5]):  # 사이 낀거
