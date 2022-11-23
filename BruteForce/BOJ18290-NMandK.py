@@ -3,12 +3,10 @@
 import sys
 from itertools import combinations
 
-directions = {(-1, 0), (0, -1), (1, 0), (0, 1)}
-
 if __name__ == '__main__':
+
     rowNumber, colNumber, selectCount = map(int, input().split())
     numberMatrix = []
-
     for _ in range(rowNumber):
         numberMatrix += list(map(int, input().split()))
 
