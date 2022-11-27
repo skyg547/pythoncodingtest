@@ -16,18 +16,20 @@ if __name__ == '__main__':
     answerSet = set()
     for _ in range(number):
         command = input().split()
-        if command[0] == 'toggle':
-            command[0] = 'remove' if command[1] in answerSet else 'add'
-        if command[0] == 'all':
-            answerSet.clear()
-            for value in {'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17',
-                          '18', '19', '20'}:
-                answerSet.add(value)
-        elif command[0] == 'add':
-            answerSet.add(command[1])
+
+        if command[0] == 'add':
+            answerSet.add(int(command[1]))
         elif command[0] == 'remove':
-            answerSet.discard(command[1])
+            answerSet.discard(int(command[1]))
         elif command[0] == 'check':
-            print(1 if command[1] in answerSet else 0)
+            print(1 if int(command[1]) in answerSet else 0)
+        elif command[0] == 'toggle':
+            if int(command[1]) in answerSet:
+                answerSet.remove(int(command[1]))
+            else:
+                answerSet.add(int(command[1]))
         elif command[0] == 'empty':
             answerSet.clear()
+        elif command[0] == 'all':
+            answerSet = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                         11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
