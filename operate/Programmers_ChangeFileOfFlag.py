@@ -17,10 +17,11 @@
 #
 # 예제 2번에서 flag가 false이므로 a - b = (-4) - 7 = -11을 return 합니다.
 
-
-def solution(a, b, flag):
-    return a + b if flag else a - b
+#
+# def solution(a, b, flag):
+#     return a + b if flag else a - b
 
 
 if __name__ == '__main__':
-    print(solution(1,2,False))
+    solutions = lambda a, b, f: [a - b, a + b][f]
+    print(solutions(1,2,False))
